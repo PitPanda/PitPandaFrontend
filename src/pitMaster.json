@@ -841,7 +841,7 @@
 					"§e ■ §7Multiple of 4: §cRegeneration II §f(0:10)",
 					"§e ■ §7Multiple of 7: Gain between §6500g§7-§65,000g",
 					"§e ■ §7Multiple of 8: Gain between §b500§7-§b5,000 XP",
-					"§e ■ §7Multiple of 12: §b+4❤ absorption",
+					"§e ■ §7Multiple of 12: §6+4❤ absorption",
 					"§e ■ §7Multiple of 13: §c+25% damage §f(0:30)"
 				],
 				"Interval":25,
@@ -855,7 +855,7 @@
 			"withercraft":{
 				"Name": "Withercraft",
 				"Description":[
-					"§7Consume a §5Chunk of Vile",
+					"§7Consume §52 Chunks of Vile",
 					"§7to regain §c1 life §7on",
 					"§7the §7item in the §dMystic",
 					"§dWell§7."
@@ -1034,9 +1034,6 @@
 					" §d■ §7200 kills: §c-2 max ❤",
 					" §d■ §7300 kills: Potion Effects last §c-50% §7as long",
 					" §d■ §7400 kills: §cNo longer gain health",
-					"",
-					"§7During the streak:",
-					" §b■ §7Copy and store your kills §bXP§7.",
 					"",
 					"§7On death:",
 					"§7Earn a random §dUberdrop §7if you have at least 400 streak."
@@ -1303,7 +1300,7 @@
 				"Category":"Upgrade"
 			},
 			"yummy":{
-				"Name": "Yummy",
+				"Name": "Yummy!",
 				"Description":[
 					"§7Golden apples and heads you",
 					"§7eat reward §6+3g§7!"
@@ -1404,6 +1401,21 @@
 				"Item":{
 					"Id": 321,
 					"Meta": 0
+				},
+				"Category":"Upgrade"
+			},
+			"pure_rage":{
+				"Name": "Pure Rage",
+				"Description":[
+					"§7Access §4Rage Pants,",
+					"§7offering counter-measures to",
+					"§7aggravate your victims"
+				],
+				"Levels":[""],
+				"Costs":[35],
+				"Item":{
+					"Id": 300,
+					"Meta": "780000"
 				},
 				"Category":"Upgrade"
 			},
@@ -2601,14 +2613,17 @@
 			"melee_heal_on_hit": {
 				"Descriptions": [
 					[
-						"§7Heal for §c4% §7of damage dealt"
-					],
+						"§7Heal for §c4% §7of damage dealt up",
+						"§7to §c1.5❤"
+				        ],
 					[
-						"§7Heal for §c8% §7of damage dealt"
-					],
+						"§7Heal for §c8% §7of damage dealt up",
+						"§7to §c1.5❤"
+				        ],
 					[
-						"§7Heal for §c13% §7of damage dealt"
-					]
+						"§7Heal for §c13% §7of damage dealt up",
+						"§7to §c1.5❤"
+				        ]
 				],
 				"Name": "§9Lifesteal",
 				"Type": "sword",
@@ -4737,16 +4752,16 @@
 			"singularity": {
 				"Descriptions": [
 					[
-						"§7Hits you receive deal at most §c3❤",
-						"§c§7damage"
-					],
-					[
 						"§7Hits you receive deal at most §c2❤",
 						"§c§7damage"
 					],
 					[
 						"§7Hits you receive deal at most",
-						"§7§c1.5❤ §7damage"
+						"§7§c1.25❤ §7damage"
+					],
+					[
+						"§7Hits you receive deal at most §c1❤",
+						"§c§7damage"
 					]
 				],
 				"Name": "§dRARE! §9Singularity",
@@ -4957,7 +4972,7 @@
 				"Descriptions": [
 					[
 						"§7Critical hits against you deal",
-						"§7§965% §7of the damage they",
+						"§7§980% §7of the damage they",
 						"§7normally would"
 					],
 					[
@@ -4968,7 +4983,7 @@
 					],
 					[
 						"§7Critical hits against you deal",
-						"§7§940% §7of the damage they",
+						"§7§950% §7of the damage they",
 						"§7normally would and empower your",
 						"§7next strike for §c+30% §7damage"
 					]
@@ -5385,6 +5400,34 @@
 				"Type": "boots",
 				"Classes": [
 					"defense"
+				]
+			},
+			"rgm": {
+				"Descriptions": [
+					[
+						"§7When a player hits you from",
+						"§7above ground §e3 times §7in a row:",
+						" §7You heal §c1.25❤"
+				        ],
+					[
+						"§7When a player hits you from",
+						"§7above ground §e3 times §7in a row:",
+						" §7You heal §c1.25❤",
+						" §7Gain §c+1.5❤ §7damage vs them for 30s"
+				        ],
+					[
+						"§7When a player hits you from",
+						"§7above ground §e3 times §7in a row:",
+						" §7You heal §c1.25❤",
+						" §7Gain §c+1.5❤ §7damage vs them for 30s",
+						" §7They take §c0.5❤ §7true damage"
+				     	]
+				],
+				"Name": "§dRARE! §9Retro-Gravity Microcosm",
+				"Type": "pants",
+				"Classes": [
+					"defense",
+					"damage"
 				]
 			}
 		}
