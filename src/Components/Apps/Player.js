@@ -82,6 +82,7 @@ class Player extends React.Component {
                             This player has been marked as {display.type} by the <a href="https://discord.gg/CdTmYrG">Trade Center Discord</a> staff.
                             {display.notes?<><br/><br/>Trade Center Staff notes:<br/> {display.notes}</>:''}
                             {display.discordid?<><br/><br/>Discord ID: <br/>{display.discordid}</>:''}
+                            {display.main?<><br/><br/>Main:<br/><PlayerList players={[{tag:display.main}]} instant={true} /></>:''}
                           </div>
                         </StaticCard>
                       );
