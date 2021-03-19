@@ -4,19 +4,16 @@ import Link from '../Link/Link';
 import TitlelessCard from '../Cards/TitlelessCard';
 import frontendTools from '../../scripts/frontendTools';
 import MinecraftText from '../Minecraft/MinecraftText';
+import axios from 'axios';
 
 export default (props) => {
   const [players, setPlayers] = useState();
   useEffect(() => {
     (async()=>{
-      try{
-        const data = await fetch('/api/randomplayers').then(r=>r.json());
-        console.log(data);
-        if(!data.success) return;
-        setPlayers(data.players);
-      }catch(e){
-        console.error(e);
-      }
+      const response = await axios.get(`/api/randomplayers`).catch(r=>r);
+      const data = response.data;
+      if(!data.success) return;
+      setPlayers(data.players);
     })();
   }, [props]);
   return (

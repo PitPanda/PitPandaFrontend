@@ -10,6 +10,7 @@ import PlayerList from '../PlayerList/PlayerList';
 import LeaderboardPositions from '../LeaderboardPositions/LeaderboardPositions';
 import frontendTools from '../../scripts/frontendTools';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 const upperFirst = str => str.charAt(0).toUpperCase() + str.substring(1);
 
@@ -28,17 +29,13 @@ class Player extends React.Component {
     this.unlisten();
   }
 
-  loadUser = (path) => {
+  loadUser = async (path) => {
     if(!path.startsWith('/players/'))return;
-    fetch(`/api${path}`).then(res=>res.json()).then(json => {
-      console.log(json);
-      if(json.success && this.state.alive) {
-        this.setState({user:json.data,error:undefined});
-      } else this.setState({error:json.error,user:undefined});
-    }).catch((err)=>{
-      if(this.state.alive) this.setState({error:err,user:undefined});
-      console.log(err);
-    });
+    const response = await axios.get(`/api${path}`).catch(r=>r);
+    const json = response.data;
+    if(json.success && this.state.alive) {
+      this.setState({user:json.data,error:undefined});
+    } else this.setState({error:json.error,user:undefined});
   }
 
   render() {

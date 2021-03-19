@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MinecraftText from '../Minecraft/MinecraftText';
 import boards from '../../scripts/leaderboards';
 import Link from '../Link/Link';
+import axios from 'axios';
 //import { Link } from 'react-router-dom';
 
 const formatPosition = (n)=>{
@@ -18,16 +19,11 @@ export default (props) => {
     useEffect(()=>{
         let alive = true;
         (async()=>{
-            try{
-                const request = await fetch(`/api/position/${props.uuid}`);
-                const json = await request.json();
-                console.log(json);
-                if(alive){
-                    if(!json.success) setPositions({error:(json.error||'An error has occured')});
-                    else setPositions(json.rankings);
-                }
-            }catch(e){
-                if(alive) setPositions({error:e});
+            const request = await axios.get(`/api/position/${props.uuid}`).catch(r=>r);
+            const json = request.data;
+            if(alive){
+                if(!json.success) setPositions({error:(json.error||'An error has occured')});
+                else setPositions(json.rankings);
             }
         })();
         return () => alive = false;

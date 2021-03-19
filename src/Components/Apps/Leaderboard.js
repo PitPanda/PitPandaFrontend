@@ -6,32 +6,30 @@ import Link from '../Link/Link';
 import PageSelector from '../PageSelector/PageSelector';
 import boards from '../../scripts/leaderboards';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 const defaultCategory = 'gapples';
 
 async function getLeaderboard({ category = defaultCategory, page = 0 }) {
     try {
-        const pageRequest = await fetch(`/api/leaderboard/${category}?page=${page}`);
-        const json = await pageRequest.json();
-        console.log(json);
+        const pageRequest = await axios.get(`/api/leaderboard/${category}?page=${page}`).catch(r=>r);
+        const json = pageRequest.data;
         if (!json.success) return { error: (json.error || 'An error occured') };
         return json.leaderboard;
     } catch (e) {
-        return { error: e };
     }
 }
 
-async function getIndexerStatus() {
-    try{
-        const response = await fetch('/api/indexer');
-        if (!response.ok) return {error:response.statusText};
-        const data = await response.json();
-        console.log(data);
+const getIndexerStatus = (() => {
+    let lastUpdated = 0;
+    return async () => {
+        if(lastUpdated + 60e3 > Date.now()) return;
+        lastUpdated = Date.now();
+        const response = await axios.get('/api/indexer').catch(r=>r);
+        const data = response.data;
         return data.data;
-    }catch(error){
-        return {error};
     }
-}
+})();
 
 function getQuery(search) {
     let query = queryString.parse(search);
@@ -61,7 +59,7 @@ function Leaderboard(props) {
             }
         }).catch(console.error);
         getIndexerStatus().then(indexer=>{
-            if(alive) {
+            if(alive && indexer) {
                 if(indexer.error) console.log(indexer.error);
                 else setIndexData(indexer);
             }
@@ -98,7 +96,6 @@ function Leaderboard(props) {
                                 <MinecraftText raw={`Daily Players Indexed: §6${indexData.dailyCount.toLocaleString()}`} /><br />
                                 <MinecraftText raw={`Rate: §6${Math.round(1e5/indexData.checkTimeout)/1e2} players/sec`} /><br />
                                 <MinecraftText raw={`Daily Queue Time: §6${(()=>{
-                                    console.log(indexData);
                                     const seconds = Math.round(indexData.dailyCount*indexData.checkTimeout/1e3);
                                     return `${Math.floor(seconds/3600)}h ${Math.floor((seconds%3600)/60)}m`;
                                 })()}`} /><br />

@@ -4,6 +4,7 @@ import StaticCard from '../Cards/StaticCard';
 import QueryBox from '../QueryBox/QueryBox';
 import getName, {cache} from '../../scripts/playerName';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 const pageSize = 72;
 class ItemSearch extends React.Component {
@@ -26,37 +27,27 @@ class ItemSearch extends React.Component {
         this.unlisten();
     }
 
-    query=(queryString)=>{
+    async query(queryString){
         if(queryString.length===0)
             return this.setState({results:new Array(9).fill({fake:true}),loading:false,lastsize:0,page:0,queryString});
         if(this.state.queryString===queryString) return;
         this.setState({loading:true,page:0,queryString});
-        fetch('/api/itemsearch/'+queryString).then(res=>res.json()).then(json => {
-            if(!json.success) {
-                this.setState({results:[{
-                    checked: true,
-                    count: 1,
-                    desc: [`§c${json.error}`],
-                    id: 166,
-                    meta: 0,
-                    name: '§4An Error has occured',
-                }],loading:false,lastsize:1});
-                return;
-            };
-            this.readyItems(json.items);
-            const result = json.items.map(item=>item.item);
-            console.log(json);
-            this.setState({results:result,loading:false,lastsize:result.length});
-        }).catch(e => {
+        const response = await axios.get(`/api/itemsearch/${queryString}`).catch(r=>r);
+        const json = response.data;
+        if(!json.success) {
             this.setState({results:[{
                 checked: true,
                 count: 1,
-                desc: ["§cOof maybe wait a bit."],
+                desc: [`§c${json.error}`],
                 id: 166,
                 meta: 0,
                 name: '§4An Error has occured',
             }],loading:false,lastsize:1});
-        })
+            return;
+        };
+        this.readyItems(json.items);
+        const result = json.items.map(item=>item.item);
+        this.setState({results:result,loading:false,lastsize:result.length});
     }
 
     updatePath=(queryString)=>this.props.history.push(`/itemsearch/${queryString}`);
@@ -110,16 +101,15 @@ class ItemSearch extends React.Component {
         }
     }
 
-    loadMore = () => {
+    loadMore = async () => {
         this.setState({loading:true,page:this.state.page+1})
-        fetch(`/api/itemSearch/${this.state.queryString}/${this.state.page+1}`).then(res=>res.json()).then(json => {
-            if(!json.success) return;
-            this.readyItems(json.items);
-            let results = this.state.results;
-            results = results.concat(json.items.map(item=>item.item));
-            console.log(json);
-            this.setState({results,loading:false,lastsize:json.items.length});
-        });
+        const response = await axios.get(`/api/itemSearch/${this.state.queryString}`, {params: {page: this.state.page+1}}).catch(r=>r);
+        const json = response.data;
+        if(!json.success) return;
+        this.readyItems(json.items);
+        let results = this.state.results;
+        results = results.concat(json.items.map(item=>item.item));
+        this.setState({results,loading:false,lastsize:json.items.length});
     }
 
     directToOwner = (i,e) =>{
