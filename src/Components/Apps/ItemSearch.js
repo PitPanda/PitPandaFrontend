@@ -32,12 +32,31 @@ class ItemSearch extends React.Component {
         if(this.state.queryString===queryString) return;
         this.setState({loading:true,page:0,queryString});
         fetch('/api/itemsearch/'+queryString).then(res=>res.json()).then(json => {
-            if(!json.success) return;
+            if(!json.success) {
+                this.setState({results:[{
+                    checked: true,
+                    count: 1,
+                    desc: [`§c${json.error}`],
+                    id: 166,
+                    meta: 0,
+                    name: '§4An Error has occured',
+                }],loading:false,lastsize:1});
+                return;
+            };
             this.readyItems(json.items);
             const result = json.items.map(item=>item.item);
             console.log(json);
             this.setState({results:result,loading:false,lastsize:result.length});
-        });
+        }).catch(e => {
+            this.setState({results:[{
+                checked: true,
+                count: 1,
+                desc: ["§cOof maybe wait a bit."],
+                id: 166,
+                meta: 0,
+                name: '§4An Error has occured',
+            }],loading:false,lastsize:1});
+        })
     }
 
     updatePath=(queryString)=>this.props.history.push(`/itemsearch/${queryString}`);

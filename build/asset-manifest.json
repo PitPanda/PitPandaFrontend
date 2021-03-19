@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.ab6936df.chunk.css",
-    "main.js": "/static/js/main.8b26b3ea.chunk.js",
-    "main.js.map": "/static/js/main.8b26b3ea.chunk.js.map",
+    "main.css": "/static/css/main.a08997e6.chunk.css",
+    "main.js": "/static/js/main.41314e4c.chunk.js",
+    "main.js.map": "/static/js/main.41314e4c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.94058b0e.js",
     "runtime-main.js.map": "/static/js/runtime-main.94058b0e.js.map",
-    "static/js/2.f50f13e9.chunk.js": "/static/js/2.f50f13e9.chunk.js",
-    "static/js/2.f50f13e9.chunk.js.map": "/static/js/2.f50f13e9.chunk.js.map",
+    "static/js/2.28120630.chunk.js": "/static/js/2.28120630.chunk.js",
+    "static/js/2.28120630.chunk.js.map": "/static/js/2.28120630.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.727414e58dc2aa135f5767e3df804ce0.js": "/precache-manifest.727414e58dc2aa135f5767e3df804ce0.js",
+    "precache-manifest.8155bef4a89256f4d26a6b285079e094.js": "/precache-manifest.8155bef4a89256f4d26a6b285079e094.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.ab6936df.chunk.css.map": "/static/css/main.ab6936df.chunk.css.map",
-    "static/js/2.f50f13e9.chunk.js.LICENSE.txt": "/static/js/2.f50f13e9.chunk.js.LICENSE.txt",
+    "static/css/main.a08997e6.chunk.css.map": "/static/css/main.a08997e6.chunk.css.map",
+    "static/js/2.28120630.chunk.js.LICENSE.txt": "/static/js/2.28120630.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/minecraft-italic.35903bfa.otf",
     "static/media/itemStyles.css": "/static/media/blocks_items_potions.195f6b98.png"
   },
   "entrypoints": [
     "static/js/runtime-main.94058b0e.js",
-    "static/js/2.f50f13e9.chunk.js",
-    "static/css/main.ab6936df.chunk.css",
-    "static/js/main.8b26b3ea.chunk.js"
+    "static/js/2.28120630.chunk.js",
+    "static/css/main.a08997e6.chunk.css",
+    "static/js/main.41314e4c.chunk.js"
   ]
 }
