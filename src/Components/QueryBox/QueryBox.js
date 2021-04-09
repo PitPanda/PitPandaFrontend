@@ -31,6 +31,8 @@ Mystics.overpowered = {Name:'§fOverpowered',Type:'any',NoNumber:true};
 Mystics.miraculous = {Name:'§fMiraculous',Type:'any',NoNumber:true};
 Mystics.million = {Name:'§fOne in a Million',Type:'any',NoNumber:true};
 Mystics.nonce = {Name:'§fNonce',Type:'any'};
+Mystics.uuid = {Name:'§fCurrent Owner',Type:'any'};
+Mystics.past = {Name:'§fPast Owner',Type:'any'};
 Mystics.color = {Name:'§fColor',Type:'pants',Colors:{
     red:'0',
     yellow:'1',
