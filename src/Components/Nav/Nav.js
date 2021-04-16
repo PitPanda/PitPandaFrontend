@@ -25,9 +25,6 @@ function Nav(props){
             {buttons.map((info,index)=>(
                 <Link key={Date.now()+index} href={info.path} className={index===selected?'active':''}>{info.name}</Link>
             ))}
-            <div style={{'float':'right','display':'inline'}}>
-                <a href="https://hypixel.net/threads/gg-i-got-perm-banned.4123850" style={{'textDecoration':'none'}}>#FreeMcPqndq</a>
-            </div>
         </div>
     );
 } export default withRouter(Nav);
