@@ -1,0 +1,65 @@
+@media (max-width: 1650px) {
+  #side .Card,
+  #main .Card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  html {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 1100px) {
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #side {
+    width: 80%;
+  }
+
+  #main {
+    width: 80%;
+  }
+}
+
+@media (max-width: 505px) {
+  #side .Card-Head {
+    font-size: 1.2em;
+  }
+
+  #main .Card-Head {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 400px) {
+  .profile-container .Card {
+    font-size: 1em;
+  }
+
+  #side .Card-Head {
+    font-size: 1em;
+  }
+
+  #main .Card-Head {
+    font-size: 1em;
+  }
+
+  #main .Card-Body {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 380px) {
+  #main .Card-Head {
+    font-size: 0.85em;
+  }
+
+  #main .Card-Body {
+    font-size: 0.6em;
+  }
+}
