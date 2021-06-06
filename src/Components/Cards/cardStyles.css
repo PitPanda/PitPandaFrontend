@@ -1,11 +1,11 @@
-.Card{
-  width:100%;
+.Card {
+  width: 650px;
   border: 2px solid #202020;
   margin-bottom: 20px;
-  Color: #999999;
+  color: #999999;
 }
 
-.Card-Head{
+.Card-Head {
   border-bottom: 2px solid #202020;
   font-size: 24px;
   font-family: robotolight;
@@ -14,15 +14,16 @@
   text-align: left;
 }
 
-.Card-Body{
+.Card-Body {
   padding: 15px;
   background-color: #2e2e2e;
 }
 
-.Card-Head ul li, .CardTitle{
-  display:inline;
+.Card-Head ul li,
+.CardTitle {
+  display: inline;
   margin-right: 10px;
-  cursor:pointer;
+  cursor: pointer;
   text-align: center;
   -webkit-transition: border 0.1s;
   -moz-transition: border 0.1s;
@@ -30,14 +31,29 @@
   transition: border 0.1s;
 }
 
-.CardTitle{
+.CardTitle {
   width: 30px;
 }
 
-ul li:hover,.CardTitle:hover{
+ul li:hover,
+.CardTitle:hover {
   color: #aaa;
   -webkit-transition: color 0.1s;
   -moz-transition: color 0.1s;
   -o-transition: color 0.1s;
   transition: color 0.1s;
+}
+
+@media (max-width: 756px) {
+  .Card {
+    width: 85%;
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 400px) {
+  .Card {
+    width: 75%;
+    font-size: 0.5em;
+  }
 }

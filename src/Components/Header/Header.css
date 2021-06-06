@@ -1,0 +1,9 @@
+form {
+  margin: 0;
+}
+
+@media (max-width: 620px) {
+  #search.header {
+    font-size: 2px;
+  }
+}

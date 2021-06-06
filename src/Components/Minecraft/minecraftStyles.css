@@ -1,16 +1,16 @@
-.MinecraftText{
+.MinecraftText {
   font-family: "Minecraftia";
   display: inline-block;
 }
 
-.item{
+.item {
   display: inline-block;
   padding: 8px;
   padding-bottom: 1px;
   border-radius: 10px;
   background-color: #333333;
   border: 2px solid #333333;
-  margin:1.7px;
+  margin: 1.7px;
   -webkit-transition: border 0.1s;
   -moz-transition: border 0.1s;
   -o-transition: border 0.1s;
@@ -18,13 +18,13 @@
 }
 
 .mctooltip {
-  background: #120211; 
-  padding: 5px; 
-  padding-bottom: 3px; 
-  border-radius: 5px; 
-  border: 4px solid #25015b; 
+  background: #120211;
+  padding: 5px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  border: 4px solid #25015b;
   line-height: 17px;
-  padding-right:12px;
+  padding-right: 12px;
   width: max-content;
   font-size: 15px;
 }
@@ -34,7 +34,7 @@
   display: inline-block;
   visibility: hidden;
   opacity: 0;
-  position: absolute; 
+  position: absolute;
   margin-top: 39px;
   margin-left: -35px;
   -webkit-transition: opacity 0.1s;
@@ -50,7 +50,7 @@
 
 .count {
   position: absolute;
-  font-family: 'Minecraftia';
+  font-family: "Minecraftia";
   color: #fff;
   margin-left: 21px;
   margin-top: 18px;
@@ -68,7 +68,8 @@
   filter: brightness(70%) grayscale(100%);
 }
 
-.item:hover .itemcontainer, .item.shown .itemcontainer {
+.item:hover .itemcontainer,
+.item.shown .itemcontainer {
   visibility: visible;
   opacity: 1;
 }
@@ -77,53 +78,94 @@
   pointer-events: none;
 }
 
-.item:hover, .item.shown {
+.item:hover,
+.item.shown {
   border: 2px solid #666;
 }
 
-.rare:hover, .rare.shown{
+.rare:hover,
+.rare.shown {
   border-color: #a5f;
 }
 
-.bountiful:hover, .bountiful.shown{
+.bountiful:hover,
+.bountiful.shown {
   border-color: #1ef;
 }
 
-.legendary:hover, .legendary.shown{
+.legendary:hover,
+.legendary.shown {
   border-color: #e81;
 }
 
-.extraordinary:hover, .extraordinary.shown{
+.extraordinary:hover,
+.extraordinary.shown {
   border-color: #b11;
 }
 
-.evil:hover, .evil.shown{
+.evil:hover,
+.evil.shown {
   border-color: #000;
 }
 
-.artifact:hover, .artifact.shown{
+.artifact:hover,
+.artifact.shown {
   border-color: #1a1;
 }
 
-.overpowered:hover, .overpowered.shown{
+.overpowered:hover,
+.overpowered.shown {
   border-color: #e5ff00;
 }
 
-.miraculous:hover, .miraculous.shown{
+.miraculous:hover,
+.miraculous.shown {
   animation: rainbow 3s infinite;
   -webkit-animation: rainbow 3s infinite;
 }
 
-.unthinkable:hover, .unthinkable.shown{
+.unthinkable:hover,
+.unthinkable.shown {
   border-color: #ff00ff;
 }
 
-@keyframes rainbow{
-  0%  {border-color: blue;}
-  17%  {border-color: purple;}
-  34% {border-color: red;}
-  51%  {border-color: orange;}
-  68%  {border-color: yellow;}
-  85%  {border-color: green;}
-  100%  {border-color: blue;}
+@keyframes rainbow {
+  0% {
+    border-color: blue;
+  }
+  17% {
+    border-color: purple;
+  }
+  34% {
+    border-color: red;
+  }
+  51% {
+    border-color: orange;
+  }
+  68% {
+    border-color: yellow;
+  }
+  85% {
+    border-color: green;
+  }
+  100% {
+    border-color: blue;
+  }
+}
+
+@media (max-width: 756px) {
+  #item {
+    width: 28px;
+  }
+}
+
+@media (max-width: 645px) {
+  .item {
+    margin: 0;
+  }
+
+  #item {
+    width: 26px;
+    transform: scale(0.7);
+  }
 }
