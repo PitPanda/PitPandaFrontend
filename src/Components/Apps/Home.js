@@ -47,7 +47,7 @@ const Home = (props) => {
         margin: 'auto',
       }}>
         {players?players.map((player, index) => {
-          if(index === adIndex && new URLSearchParams(window.location.search).get('beta') === 'true') return (
+          if(index === adIndex) return (
             <TitlelessCard key={player.uuid} style={{width:'410px',margin:'10px',display:'inline-block'}}>
               <Link href="https://discord.gg/wVGdGWcVdh">
                 <img 
