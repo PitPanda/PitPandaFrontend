@@ -1,12 +1,15 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 
-function Link(props){
+const Link = withRouter((props) => {
     const onClick = e => {
-        if(e.ctrlKey || e.button === 1) window.open(`${window.location.origin}${props.href}`).focus();
-        else if((props.href!==window.location.pathname+window.location.search) && (e.button === 0)) {
-            props.history.push(props.href);
-            if(props.scroll) window.scrollTo(0,0);
+        if(e.ctrlKey || e.button === 1) window.open(`${props.location.origin}${props.href}`).focus();
+        else if((props.href!==props.location.pathname+props.location.search) && (e.button === 0)) {
+            if(props.href.startsWith('http')) window.open(`${props.href}`).focus();
+            else {
+                props.history.push(props.href);
+                if(props.scroll) window.scrollTo(0,0);
+            }
         }
     }
     return (
@@ -14,5 +17,6 @@ function Link(props){
             {props.children}
         </div>
     );
-}
-export default withRouter(Link);
+});
+
+export default Link;

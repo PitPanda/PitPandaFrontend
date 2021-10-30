@@ -28,9 +28,9 @@ function Nav(props){
             {new URLSearchParams(window.location.search).get('beta') === 'true' ? (
                 <Link
                     href={'https://discord.gg/wVGdGWcVdh'}
-                    style={{float: 'right'}}
+                    style={{float: 'right', width: '250px'}}
                 >
-                    {'Checkout pitsandbox.io!'}
+                    {'Checkout mc.pitsandbox.io!'}
                 </Link>
             ):''}
         </div>

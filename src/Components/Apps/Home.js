@@ -56,7 +56,7 @@ const Home = (props) => {
                   alt = ''
                 />
                 <div key={player.uuid} style={textContainerStyle}>
-                  <Text style={{fontSize:'110%'}} raw={`§bJoin pitsandbox.io!`}/><br/>
+                  <Text style={{fontSize:'110%'}} raw={`§eJoin mc.pitsandbox.io!`}/><br/>
                   <Text raw="Fast paced gamplay to test mystics, have fun 1v1s, and meet a new community." />
                 </div>
               </Link>
