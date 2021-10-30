@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MinecraftText from '../Minecraft/MinecraftText';
+import Text from '../Minecraft/Text';
 import boards from '../../scripts/leaderboards';
 import Link from '../Link/Link';
 import axios from 'axios';
@@ -30,7 +30,7 @@ export default (props) => {
     }, [props.uuid]);
     return boards.ownKeys(props.hiddens).map(key=>(
         <Link href={`/leaderboard?category=${key}&page=${Math.floor(((positions[key]||1)-1)/100)}`} key={key} scroll={true}>
-            <MinecraftText raw={`${boards[key].short}: ${formatPosition(positions[key])}`} /><br/>
+            <Text raw={`${boards[key].short}: ${formatPosition(positions[key])}`} /><br/>
         </Link>
     ));
 }

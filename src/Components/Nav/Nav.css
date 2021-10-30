@@ -9,6 +9,13 @@ div.nav div {
     transition: 0.2s;
 }
 
+div.nav span {
+    display: inline-block !important;
+    width:200px;
+    padding:10px;
+    text-align: center;
+}
+
 div.nav div:hover {
     color:#ccc;
     cursor: pointer;

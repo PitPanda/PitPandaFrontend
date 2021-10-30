@@ -1,6 +1,6 @@
 import React from 'react';
-import MinecraftItemDescription from './MinecraftItemDescription';
-import MinecraftItemImg from './MinecraftItemImg';
+import MinecraftItemDescription from './ItemDescription';
+import MinecraftItemImg from './ItemImg';
 import './minecraftStyles.css';
 
 const colors = [

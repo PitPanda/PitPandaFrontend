@@ -1,8 +1,8 @@
 import React from 'react';
-import MinecraftItemSlot from './MinecraftItemSlot';
+import MinecraftItemSlot from './ItemSlot';
 import './minecraftStyles.css';
 
-class MinecraftInventory extends React.Component {
+class Inventory extends React.Component {
     constructor(props){
         super(props);
         const width = props.width || 9;
@@ -67,4 +67,4 @@ class MinecraftInventory extends React.Component {
     }
 }
 
-export default MinecraftInventory;
+export default Inventory;

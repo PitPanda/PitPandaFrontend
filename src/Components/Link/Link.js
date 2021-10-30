@@ -14,4 +14,5 @@ function Link(props){
             {props.children}
         </div>
     );
-} export default withRouter(Link);
+}
+export default withRouter(Link);

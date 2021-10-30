@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import MinecraftText from '../Minecraft/MinecraftText';
+import Text from '../Minecraft/Text';
 import './SearchField.css';
 
 class SearchField extends Component {
@@ -217,7 +217,7 @@ class SearchField extends Component {
                                     onClick={onClick}
                                     index={index}
                                     >
-                                    <MinecraftText raw={suggestion[1].Name}/>
+                                    <Text raw={suggestion[1].Name}/>
                                 </li>
                             );
                         })}

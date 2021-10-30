@@ -10,6 +10,7 @@ import Leaderboard from './Components/Apps/Leaderboard';
 import Signatures from './Components/Apps/Signatures';
 import KeyInfo from './Components/Apps/KeyInfo';
 import axios from 'axios';
+import { RecoilRoot} from 'recoil';
 
 axios.interceptors.request.use(config => {
     const key = window.localStorage.getItem('apikey');
@@ -30,7 +31,7 @@ axios.interceptors.response.use(response => {
 });
 
 ReactDOM.render((
-    <>
+    <RecoilRoot>
         <BrowserRouter>
             <Nav/>
             <Switch>
@@ -43,5 +44,5 @@ ReactDOM.render((
                 <Redirect to="/"/>
             </Switch>
         </BrowserRouter>
-    </>
+    </RecoilRoot>
 ), document.getElementById('root'));

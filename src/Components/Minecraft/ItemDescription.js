@@ -1,5 +1,5 @@
 import React from 'react';
-import MinecraftText from './MinecraftText';
+import MinecraftText from './Text';
 import './minecraftStyles.css';
 
 class MinecraftItemDescription extends React.Component {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import queryString from 'query-string';
 import StaticCard from '../Cards/StaticCard';
-import MinecraftText from '../Minecraft/MinecraftText';
+import Text from '../Minecraft/Text';
 import Link from '../Link/Link';
 import PageSelector from '../PageSelector/PageSelector';
 import boards from '../../scripts/leaderboards';
@@ -82,24 +82,24 @@ function Leaderboard(props) {
                             return (
                                 <div key={key+target.category}>
                                     <Link href={`/leaderboard?category=${key}&page=0`}>
-                                        <MinecraftText raw={(key===target.category?'§f':'')+board.short}/>
+                                        <Text raw={(key===target.category?'§f':'')+board.short}/>
                                     </Link>
                                 </div>
                             );
                         })}
                     </StaticCard>
                     <StaticCard title="Indexer Status" style={{ width: '350px' }}>
-                        <MinecraftText className='text-title' raw={'Status: ' + (indexData.online ? '§2Online' : '§4Offline')} /><br />
+                        <Text className='text-title' raw={'Status: ' + (indexData.online ? '§2Online' : '§4Offline')} /><br />
                         {indexData.online ? (
                             <>
-                                <MinecraftText raw={`Players Queued: §6${indexData.remaingCount.toLocaleString()}`} /><br />
-                                <MinecraftText raw={`Daily Players Indexed: §6${indexData.dailyCount.toLocaleString()}`} /><br />
-                                <MinecraftText raw={`Rate: §6${Math.round(1e5/indexData.checkTimeout)/1e2} players/sec`} /><br />
-                                <MinecraftText raw={`Daily Queue Time: §6${(()=>{
+                                <Text raw={`Players Queued: §6${indexData.remaingCount.toLocaleString()}`} /><br />
+                                <Text raw={`Daily Players Indexed: §6${indexData.dailyCount.toLocaleString()}`} /><br />
+                                <Text raw={`Rate: §6${Math.round(1e5/indexData.checkTimeout)/1e2} players/sec`} /><br />
+                                <Text raw={`Daily Queue Time: §6${(()=>{
                                     const seconds = Math.round(indexData.dailyCount*indexData.checkTimeout/1e3);
                                     return `${Math.floor(seconds/3600)}h ${Math.floor((seconds%3600)/60)}m`;
                                 })()}`} /><br />
-                                <MinecraftText raw={`Remaining Queue Time: §6${(()=>{
+                                <Text raw={`Remaining Queue Time: §6${(()=>{
                                     const seconds = Math.round(indexData.remaingCount*indexData.checkTimeout/1e3);
                                     return `${Math.floor(seconds/3600)}h ${Math.floor((seconds%3600)/60)}m`;
                                 })()}`} /><br />
@@ -111,11 +111,11 @@ function Leaderboard(props) {
                 <StaticCard title={boards[data.loadedType].displayName} style={{ width: '650px', display: 'inline-block' }}>
                     {data.entires.map((user, index) => (
                         <div key={user.uuid} style={{ borderTop: (index !== 0 ? '2px solid #444' : 'none'), padding: '5px' }}>
-                            <MinecraftText style={{ width: '10%', textAlign: 'center', display: 'inline-block' }} text={`#${data.loadedPage * 100 + index + 1}`} />
+                            <Text style={{ width: '10%', textAlign: 'center', display: 'inline-block' }} text={`#${data.loadedPage * 100 + index + 1}`} />
                             <Link href={`/players/${user.uuid}`}>
-                                <MinecraftText raw={user.name} style={{ width: '50%' }} />
+                                <Text raw={user.name} style={{ width: '50%' }} />
                             </Link>
-                            <MinecraftText text={boards[data.loadedType].transform(user.score)} style={{ width: '40%', textAlign: 'right', paddingRight: '8px' }} />
+                            <Text text={boards[data.loadedType].transform(user.score)} style={{ width: '40%', textAlign: 'right', paddingRight: '8px' }} />
                         </div>
                     ))}
                     {data.entires.length?<PageSelector start={1} current={Number(target.page)+1} linkBuilder={linkBuilder}/>:''}

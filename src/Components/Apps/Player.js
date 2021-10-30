@@ -2,8 +2,8 @@ import React from 'react';
 import StaticCard from '../Cards/StaticCard';
 import TabbedCard from '../Cards/TabbedCard';
 import NumberedCard from '../Cards/NumberedCard';
-import MinecraftText from '../Minecraft/MinecraftText';
-import MinecraftInventory from '../Minecraft/MinecraftInventory';
+import Text from '../Minecraft/Text';
+import Inventory from '../Minecraft/Inventory';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import Header from '../Header/Header';
 import PlayerList from '../PlayerList/PlayerList';
@@ -62,10 +62,10 @@ class Player extends React.Component {
                       alt = ''
                     />
                     <div key={this.state.user.uuid} style={{verticalAlign:'top', display:'inline-block', marginTop:'7px',marginLeft:'10px', fontSize:'17px'}}>
-                      <MinecraftText style={{fontSize:'110%'}} raw={this.state.user.formattedName}/><br/>
-                      <MinecraftText raw={`Level: ${this.state.user.formattedLevel}`}/><br/>
-                      <MinecraftText raw={`Gold: §6${this.state.user.currentGold.toLocaleString()}g`}/><br/>
-                      <MinecraftText raw={`Played: §f${frontendTools.minutesToString(this.state.user.playtime)}`}/>
+                      <Text style={{fontSize:'110%'}} raw={this.state.user.formattedName}/><br/>
+                      <Text raw={`Level: ${this.state.user.formattedLevel}`}/><br/>
+                      <Text raw={`Gold: §6${this.state.user.currentGold.toLocaleString()}g`}/><br/>
+                      <Text raw={`Played: §f${frontendTools.minutesToString(this.state.user.playtime)}`}/>
                     </div>
                   </div>
                 </StaticCard>
@@ -114,10 +114,10 @@ class Player extends React.Component {
                 })}
                 <StaticCard title="Status" content={
                   <div style={{fontSize:'16px'}}>
-                    <MinecraftText className='text-title' style={{color:this.state.user.online?'green':'red'}} text={this.state.user.online?'Online':'Offline'}/><br/>
-                    <MinecraftText text={`Last seen in The Pit ${frontendTools.timeSince(this.state.user.lastSave)} ago`}/><br/>
-                    {this.state.user.online ? '' : <><MinecraftText text={`Last seen on Hypixel ${frontendTools.timeSince(this.state.user.lastLogout)} ago`}/><br/></>}
-                    {this.state.user.bounty?<MinecraftText raw={`Bounty: §6${this.state.user.bounty.toLocaleString()}g`}/>:''}
+                    <Text className='text-title' style={{color:this.state.user.online?'green':'red'}} text={this.state.user.online?'Online':'Offline'}/><br/>
+                    <Text text={`Last seen in The Pit ${frontendTools.timeSince(this.state.user.lastSave)} ago`}/><br/>
+                    {this.state.user.online ? '' : <><Text text={`Last seen on Hypixel ${frontendTools.timeSince(this.state.user.lastLogout)} ago`}/><br/></>}
+                    {this.state.user.bounty?<Text raw={`Bounty: §6${this.state.user.bounty.toLocaleString()}g`}/>:''}
                   </div>
                 }/>
                 <StaticCard title="Progress" content={
@@ -148,38 +148,38 @@ class Player extends React.Component {
                 <TabbedCard tabs={["Inventory","Enderchest","Stash/Well"]} content={[
                   (
                     <div key={`Inventory-${this.state.user.uuid}`}>
-                      <MinecraftInventory key='main' inventory={this.state.user.inventories.main} rows={4} colors={true} style={{marginRight:'3px'}}/>
-                      <MinecraftInventory key='armor' inventory={this.state.user.inventories.armor} width={1} rows={4} colors={true}/>
+                      <Inventory key='main' inventory={this.state.user.inventories.main} rows={4} colors={true} style={{marginRight:'3px'}}/>
+                      <Inventory key='armor' inventory={this.state.user.inventories.armor} width={1} rows={4} colors={true}/>
                     </div>
                   ),(
                     <div key={`Enderchest-${this.state.user.uuid}`}>
-                      <MinecraftInventory key='enderchest' inventory={this.state.user.inventories.enderchest} rows={3} colors={true}/>
+                      <Inventory key='enderchest' inventory={this.state.user.inventories.enderchest} rows={3} colors={true}/>
                     </div>
                   ),(
                     <div key={`Stash/Well-${this.state.user.uuid}`}>
-                      <MinecraftInventory key='stash' inventory={this.state.user.inventories.stash} rows={2} colors={true} style={{marginRight:'3px'}}/>
-                      <MinecraftInventory key='well' style={{verticalAlign:'top'}} inventory={this.state.user.inventories.well} width={1} rows={2} colors={true}/>
+                      <Inventory key='stash' inventory={this.state.user.inventories.stash} rows={2} colors={true} style={{marginRight:'3px'}}/>
+                      <Inventory key='well' style={{verticalAlign:'top'}} inventory={this.state.user.inventories.well} width={1} rows={2} colors={true}/>
                     </div>
                   )
                 ]}/>
                 <TabbedCard tabs={["Perk Shop","Renown Shop"]} content={[
                   (
                     <div key={`Perk-${this.state.user.uuid}`}>
-                      <MinecraftInventory key='perks' inventory={this.state.user.inventories.perks} width={this.state.user.inventories.perks.length} style={{margin:'0 auto', display:'block'}}/>
+                      <Inventory key='perks' inventory={this.state.user.inventories.perks} width={this.state.user.inventories.perks.length} style={{margin:'0 auto', display:'block'}}/>
                       <hr/>
-                      <MinecraftInventory key='killstreaks' inventory={this.state.user.inventories.killstreaks} width={this.state.user.inventories.killstreaks.length} style={{margin:'0 auto', display:'block'}}/>
+                      <Inventory key='killstreaks' inventory={this.state.user.inventories.killstreaks} width={this.state.user.inventories.killstreaks.length} style={{margin:'0 auto', display:'block'}}/>
                       <hr/>
-                      <MinecraftInventory key='upgrades' inventory={this.state.user.inventories.upgrades} width={7} style={{margin:'0 auto', display:'block'}}/>
+                      <Inventory key='upgrades' inventory={this.state.user.inventories.upgrades} width={7} style={{margin:'0 auto', display:'block'}}/>
                     </div>
                   ),(
                     <div key={`Renown-${this.state.user.uuid}`}>
-                      <MinecraftInventory key='renownshop' inventory={this.state.user.inventories.renownShop} width={7} style={{margin:'0 auto', display:'block'}}/>
+                      <Inventory key='renownshop' inventory={this.state.user.inventories.renownShop} width={7} style={{margin:'0 auto', display:'block'}}/>
                     </div>
                   )
                 ]}/>
                 <StaticCard title="General Stats" content={
                   <div key={`General-${this.state.user.uuid}`}>
-                    <MinecraftInventory key='genstats' inventory={this.state.user.inventories.generalStats} width={this.state.user.inventories.generalStats.length} style={{margin:'0 auto', display:'block'}}/>
+                    <Inventory key='genstats' inventory={this.state.user.inventories.generalStats} width={this.state.user.inventories.generalStats.length} style={{margin:'0 auto', display:'block'}}/>
                   </div>
                 }/>
                 <NumberedCard key={this.state.user.uuid} content={this.state.user.prestiges.map((prestige,index)=>(

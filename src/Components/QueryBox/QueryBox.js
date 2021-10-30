@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchField from '../SearchField/SearchField';
 import StaticCard from '../Cards/StaticCard';
 import pitMaster from '../../pitMaster.json';
@@ -55,82 +55,80 @@ function createInputData(){
     return {id:uuid.v4(),ref:React.createRef(),reporting:'',says:''};
 }
 
-class QueryBox extends React.Component{
-
-    state={
-        inputs:[createInputData()],
-    }
-    buttonRef=React.createRef();
-
-    killInput = (index) => {
-        if((index!==this.state.inputs.length-1&&index!==0)||(index!==0&&this.state.inputs[index-1].report==='')){
-            let inputs = this.state.inputs;
-            inputs[index-1].ref.current.focus();
-            inputs[index-1].says+='_';
-            clearTimeout(inputs[index].timeout)
-            inputs = inputs.slice(0,index).concat(inputs.slice(index+1));
-            this.setState({inputs});
+const QueryBox = props => {
+    const [inputs, setInputs] = useState(() => {
+        if(props.baseQuery) {
+            return [
+                ...props.baseQuery.split(',').map(s => {
+                    const base = createInputData();
+                    base.reporting = base.says = s;
+                    return base;
+                }),
+                createInputData()
+            ]
+        }
+        return [createInputData()]
+    })
+    const buttonRef = React.createRef();
+    const killInput = (index) => {
+        if((index !== inputs.length - 1&& index !== 0) || (index !== 0 && inputs[index-1].report === '')){
+            let newInputs = [...inputs];
+            newInputs[index-1].ref.current.focus();
+            newInputs[index-1].says+='_';
+            clearTimeout(newInputs[index].timeout)
+            newInputs = newInputs.slice(0, index).concat(newInputs.slice(index + 1));
+            setInputs(newInputs)
         }
     }
-
-    timeOutFix = (timeout,index) => {
-        let inputs = this.state.inputs;
-        inputs[index].timeout=timeout;
-        this.setState({inputs});
+    const timeOutFix = (timeout, index) => {
+        let newInputs = [...inputs];
+        newInputs[index].timeout = timeout;
+        setInputs(newInputs)
     }
-
-    monitorInputs = (report,raw,index) => {
-        let inputs = this.state.inputs;
-        inputs[index].reporting=report;
-        inputs[index].says=raw;
-        if(index+1===inputs.length){
-            inputs.push(createInputData());
-        }
-        this.setState({inputs});
+    const monitorInputs = (report,raw,index) => {
+        let newInputs = [...inputs];
+        newInputs[index].reporting=report;
+        newInputs[index].says=raw;
+        if(index+1===newInputs.length) newInputs.push(createInputData());
+        setInputs(newInputs)
     }
-
-    buildAndSendQuery = () => {
-        let inputs = this.state.inputs;
-        let toClear = inputs.filter((input,index)=>(input.reporting==='')&&index!==inputs.length-1);
+    const buildAndSendQuery = () => {
+        let newInputs = [...inputs];
+        let toClear = newInputs.filter((input,index)=>(input.reporting==='')&&index!==newInputs.length-1);
         toClear.forEach(input=>clearTimeout(input.timeout))
-        inputs = inputs.filter((input,index)=>(input.reporting!=='')||index===inputs.length-1);
-        let queryString = inputs.slice(0,-1).map(i=>i.reporting).join();
-        this.props.query(queryString);
-        this.setState({inputs});
+        newInputs = newInputs.filter((input,index)=>(input.reporting!=='')||index===newInputs.length-1);
+        let queryString = newInputs.slice(0,-1).map(i=>i.reporting).join();
+        props.query(queryString);
+        setInputs(newInputs);
     }
-
-    focus = (index) => {
-        if(this.state.inputs[index]){
-            this.state.inputs[index].ref.current.focus();
-        }else if(index>=this.state.inputs.length) this.buttonRef.current.focus();
+    const focus = (index) => {
+        if(inputs[index]) inputs[index].ref.current.focus();
+        else if(index >= inputs.length) buttonRef.current.focus();
     }
-
-    render(){
-        return (
-            <StaticCard title="Query" style={{width:'350px',display:'inline-block',verticalAlign:'top',margin:'20px',textAlign:'left'}}>
-                {this.state.inputs.map((input,index)=>(
-                    <SearchField 
-                        up={()=>this.focus(index-1)} 
-                        down={()=>this.focus(index+1)} 
-                        says={input.says} 
-                        timeOutFix={timeout=>this.timeOutFix(timeout,index)} 
-                        kill={e=>this.killInput(index)} 
-                        key={input.id} 
-                        mainRef={input.ref} 
-                        suggestions={formatted} 
-                        report={(a,b)=>this.monitorInputs(a,b,index)}
-                    />
-                ))}
-                <button 
-                    onClick={this.buildAndSendQuery} 
-                    onKeyDown={e=>{if(e.keyCode===38)this.focus(this.state.inputs.length-1);}} 
-                    ref={this.buttonRef} 
-                    className='srchBtn' 
-                    style={{marginTop:'0px'}}
-                >Search</button>
-            </StaticCard>
-        );
-    }
-}
+    return (
+        <StaticCard title="Query" style={{width:'350px',display:'inline-block',verticalAlign:'top',margin:'20px',textAlign:'left'}}>
+            {inputs.map((input,index)=>(
+                <SearchField 
+                    up={() => focus(index-1)} 
+                    down={() => focus(index+1)} 
+                    says={input.says} 
+                    timeOutFix={timeout => timeOutFix(timeout,index)} 
+                    kill={() => killInput(index)} 
+                    key={input.id} 
+                    mainRef={input.ref} 
+                    suggestions={formatted} 
+                    report={(a,b) => monitorInputs(a,b,index)}
+                />
+            ))}
+            <button 
+                onClick={buildAndSendQuery} 
+                onKeyDown={e=>{if(e.keyCode===38) focus(inputs.length - 1);}} 
+                ref={buttonRef} 
+                className='srchBtn' 
+                style={{marginTop:'0px'}}
+            >Search</button>
+        </StaticCard>
+    );
+};
 
 export default QueryBox;
