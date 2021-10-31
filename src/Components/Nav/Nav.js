@@ -29,7 +29,7 @@ function Nav(props){
                 href={'https://discord.gg/wVGdGWcVdh'}
                 style={{float: 'right', width: '250px'}}
             >
-                {'Checkout mc.pitsandbox.io!'}
+                {'Join mc.pitsandbox.io!'}
             </Link>
         </div>
     );
