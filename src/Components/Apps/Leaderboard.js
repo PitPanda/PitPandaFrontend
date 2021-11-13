@@ -41,9 +41,6 @@ function Leaderboard(props) {
     const [data, setData] = useState({ entires: [], loadedType: defaultCategory, loadedPage: 0 });
     const [indexData, setIndexData] = useState({ online: false });
 
-    const [hiddenLBs, setHiddenLBs] = useState(false);
-
-
     useEffect(() => {
         return props.history.listen(
             async location => setTarget(getQuery(location.search))
@@ -73,11 +70,11 @@ function Leaderboard(props) {
 
     return (
         <>
-            <h1 className="page-header" style={{ marginBottom: '100px', textAlign: 'center' }}>Pit Panda Leade<span onClick={ () => setHiddenLBs(!hiddenLBs) }>r</span>boards</h1>
+            <h1 className="page-header" style={{ marginBottom: '100px', textAlign: 'center' }}>Pit Panda Leaderboards</h1>
             <div style={{ textAlign: 'left', width: '1020px', margin: 'auto' }}>
                 <div style={{ display: 'inline-block', verticalAlign: 'top', marginRight: '20px' }}>
                     <StaticCard title="Leaderboard Selector" style={{ width: '350px' }}>
-                        {boards.ownKeys(hiddenLBs).map(key => {
+                        {boards.ownKeys().map(key => {
                             const board = boards[key];
                             return (
                                 <div key={key+target.category}>

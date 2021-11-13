@@ -3,7 +3,6 @@ import Text from '../Minecraft/Text';
 import boards from '../../scripts/leaderboards';
 import Link from '../Link/Link';
 import axios from 'axios';
-//import { Link } from 'react-router-dom';
 
 const formatPosition = (n)=>{
     if(typeof n === 'undefined') return 'Loading';
@@ -28,7 +27,7 @@ export default (props) => {
         })();
         return () => alive = false;
     }, [props.uuid]);
-    return boards.ownKeys(props.hiddens).map(key=>(
+    return boards.ownKeys().map(key=>(
         <Link href={`/leaderboard?category=${key}&page=${Math.floor(((positions[key]||1)-1)/100)}`} key={key} scroll={true}>
             <Text raw={`${boards[key].short}: ${formatPosition(positions[key])}`} /><br/>
         </Link>

@@ -21,10 +21,11 @@ function toPercent(num) {
 
 
 const methods = {
-    ownKeys(hidden) {
-        let entries = Object.entries(this)
-        if (!hidden) entries = entries.filter(([, { hidden }]) => !hidden)
-        return entries.sort((a, b) => a[1].short < b[1].short ? -1 : 1).map(e => e[0]);
+    ownKeys() {
+        return Object.entries(this)
+            .filter(([, { hidden }]) => !hidden)
+            .sort((a, b) => a[1].short < b[1].short ? -1 : 1)
+            .map(e => e[0]);
     },
 };
 

@@ -15,7 +15,7 @@ import axios from 'axios';
 const upperFirst = str => str.charAt(0).toUpperCase() + str.substring(1);
 
 class Player extends React.Component {
-  state = {user:null,alive:true,hiddens:false};
+  state = {user:null,alive:true};
 
   componentDidMount(){
     this.loadUser(`/players/${(this.props.match.params.id||'').trim()}`);
@@ -136,8 +136,8 @@ class Player extends React.Component {
                     />
                   </div>
                 }/>
-                <StaticCard title={<>Leade<span onClick={()=>this.setState({hiddens:!this.state.hiddens})}>r</span>board Positions</>} key={'positions'+this.state.user.uuid}>
-                  <LeaderboardPositions uuid={this.state.user.uuid} hiddens={this.state.hiddens}/>
+                <StaticCard title={<>Leaderboard Positions</>} key={'positions'+this.state.user.uuid}>
+                  <LeaderboardPositions uuid={this.state.user.uuid} />
                 </StaticCard>
               </div>
               <div id="main" style={{
