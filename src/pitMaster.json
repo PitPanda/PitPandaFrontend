@@ -5600,12 +5600,6 @@
 				"displayName": "Top Enderchests Opened",
 				"short": "Enderchests Opened"
 			},
-			"bowAccuracy": {
-				"displayName": "Top Bow Accuracy",
-				"short": "Bow Accuracy",
-				"hidden": true,
-				"transform": "toPercent"
-			},
 			"diamondItemsPurchased": {
 				"displayName": "Top Diamond Items Purchased",
 				"short": "Diamond Items Purchased"
@@ -5641,6 +5635,17 @@
 			"vampireHealedHp": {
 				"displayName": "Top HP Healed with Vampire",
 				"short": "Vampire Healing"
+			},
+			"error": {
+				"displayName": "Invalid Leaderboard",
+				"short": "Error",
+				"hidden": true
+			},
+			"default": {
+				"displayName": "Leaderboard Name",
+				"short": "Category",
+				"transform": "toString",
+				"hidden": true
 			}
 		}
 	}
