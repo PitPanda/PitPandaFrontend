@@ -5487,26 +5487,9 @@
 				"displayName": "Top Damage Received",
 				"short": "Damage Received"
 			},
-			"damageRatio": {
-				"displayName": "Top Damage Ratio",
-				"short": "Damage Ratio",
-				"transform": "toFixed",
-				"hidden": true
-			},
-			"highestStreak": {
-				"displayName": "Longest Streaks",
-				"short": "Max Streak",
-				"hidden": true
-			},
 			"deaths": {
 				"displayName": "Top Deaths",
 				"short": "Deaths"
-			},
-			"kdr": {
-				"displayName": "Top Kill Death Ratio",
-				"short": "Kill Death Ratio",
-				"transform": "toFixed",
-				"hidden": true
 			},
 			"xp": {
 				"displayName": "Top Total XP",
@@ -5545,16 +5528,6 @@
 				"displayName": "Top Soups Drank",
 				"short": "Soups Drank"
 			},
-			"tierOnes": {
-				"displayName": "Top Tier 1 Mystics Enchanted",
-				"short": "Tier 1 Mystics Enchanted",
-				"hidden": true
-			},
-			"tierTwos": {
-				"displayName": "Top Tier 2 Mystics Enchanted",
-				"short": "Tier 2 Mystics Enchanted",
-				"hidden": true
-			},
 			"tierThrees": {
 				"displayName": "Top Tier 3 Mystics Enchanted",
 				"short": "Mystics Enchanted"
@@ -5562,11 +5535,6 @@
 			"darkPants": {
 				"displayName": "Top Dark Pants Created",
 				"short": "Dark Pants Created"
-			},
-			"darkPantsT2": {
-				"displayName": "Top Dark Pants Created",
-				"short": "Dark Pants Created",
-				"hidden": true
 			},
 			"leftClicks": {
 				"displayName": "Top Left Clicks",
@@ -5628,26 +5596,6 @@
 				"displayName": "Top Launcher Launches",
 				"short": "Launcher Launches"
 			},
-			"totalJumps": {
-				"displayName": "Top Entered Pit",
-				"short": "Entered Pit",
-				"hidden": true
-			},
-			"bounty": {
-				"displayName": "Top Bounties",
-				"short": "Bounty",
-				"hidden": true
-			},
-			"genesisPoints": {
-				"displayName": "Top Genesis Points",
-				"short": "Genesis Points",
-				"hidden": true
-			},
-			"joins": {
-				"displayName": "Top Joins to Pit",
-				"short": "Joins",
-				"hidden": true
-			},
 			"enderchestOpened": {
 				"displayName": "Top Enderchests Opened",
 				"short": "Enderchests Opened"
@@ -5657,43 +5605,6 @@
 				"short": "Bow Accuracy",
 				"hidden": true,
 				"transform": "toPercent"
-			},
-			"swordHits": {
-				"displayName": "Top Sword Hits",
-				"short": "Enderchests Opened",
-				"hidden": true
-			},
-			"meleeDamageDealt": {
-				"displayName": "Top Melee Damage Dealt",
-				"short": "Melee Damage Dealt",
-				"hidden": true
-			},
-			"meleeDamageReceived": {
-				"displayName": "Top Melee Damage Received",
-				"short": "Melee Damage Received",
-				"hidden": true
-			},
-			"meleeDamageRatio": {
-				"displayName": "Top Melee Damage Ratio",
-				"short": "Melee Damage Ratio",
-				"hidden": true,
-				"transform": "toFixed"
-			},
-			"bowDamageDealt": {
-				"displayName": "Top Bow Damage Dealt",
-				"short": "Bow Damage Dealt",
-				"hidden": true
-			},
-			"bowDamageReceived": {
-				"displayName": "Top Bow Damage Received",
-				"short": "Bow Damage Dealt",
-				"hidden": true
-			},
-			"bowDamageRatio": {
-				"displayName": "Top Bow Damage Ratio",
-				"short": "Bow Damage Ratio",
-				"hidden": true,
-				"transform": "toFixed"
 			},
 			"diamondItemsPurchased": {
 				"displayName": "Top Diamond Items Purchased",
@@ -5707,45 +5618,9 @@
 				"displayName": "Top Hidden Jewels Triggered",
 				"short": "Hidden Jewels Triggered"
 			},
-			"xpHourly": {
-				"displayName": "Top XP Per Hour",
-				"short": "XP/Hour",
-				"hidden": true
-			},
-			"goldHourly": {
-				"displayName": "Top Gold Per Hour",
-				"short": "Gold/Hour",
-				"hidden": true
-			},
 			"fishingRodCasts": {
 				"displayName": "Top Fishing Rod Casts",
 				"short": "Fishing Rod Casts"
-			},
-			"kadr": {
-				"displayName": "Top Kills + Assists / Death Ratio",
-				"short": "KADR",
-				"hidden": true
-			},
-			"killAssistHourly": {
-				"displayName": "Top Kills + Assists per Hour",
-				"short": "Kills + Assists per Hour",
-				"hidden": true
-			},
-			"killsHourly": {
-				"displayName": "Top Kills per Hour",
-				"short": "Kills per Hour",
-				"hidden": true
-			},
-			"contractsStarted": {
-				"displayName": "Top Contracts Started",
-				"short": "Contracts Started",
-				"hidden": true
-			},
-			"contractsRatio": {
-				"displayName": "Top Contracts Success Rate",
-				"short": "Contract Success Rate",
-				"hidden": true,
-				"transform": "toPercent"
 			},
 			"bountiesClaimed": {
 				"displayName": "Top Bounties of 500g+ Claimed with Bounty Hunter",
@@ -5759,11 +5634,6 @@
 				"displayName": "Top Obsidian Broken",
 				"short": "Obsidian Broken"
 			},
-			"ingotsGold": {
-				"displayName": "Top Gold Earned by Ingots",
-				"short": "Gold Earned by Ingots",
-				"hidden": true
-			},
 			"ingotsPickedUp": {
 				"displayName": "Top Ingots Picked Up",
 				"short": "Ingots Gathered"
@@ -5771,17 +5641,6 @@
 			"vampireHealedHp": {
 				"displayName": "Top HP Healed with Vampire",
 				"short": "Vampire Healing"
-			},
-			"error": {
-				"displayName": "Invalid Leaderboard",
-				"short": "Error",
-				"hidden": true
-			},
-			"default": {
-				"displayName": "Leaderboard Name",
-				"short": "Category",
-				"transform": "toString",
-				"hidden": true
 			}
 		}
 	}
