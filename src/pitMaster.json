@@ -145,18 +145,6 @@
 					"Meta": 0
 				}
 			},
-			"endless_quiver":{
-				"Name": "Endless Quiver",
-				"Description":[
-					"§7Get §f3 arrows §7 on arrow",
-					"§7hit."
-				],
-				"Cost":2000,
-				"Item":{
-					"Id": 261,
-					"Meta": 0
-				}
-			},
 			"free_blocks":{
 				"Name": "Mineman",
 				"Description":[
@@ -166,6 +154,24 @@
 				"Cost":3000,
 				"Item":{
 					"Id": 4,
+					"Meta": 0
+				}
+			},
+			"endless_quiver":{
+				"Name": "Insurance",
+				"Description":[
+					"§o§eInsurance§r",
+					"§5§o§7If you die within §a2s §7of",
+					"§5§o§7being damaged, §cfull heal §7and",
+					"§5§o§7gain §9Resistance II §7(4s).",
+					"§5§o§7§820s cooldown.",
+					"§5§o",
+					"§5§o§7Cost: §62,000g",
+					"§5§o§eClick to purchase!"
+				],
+				"Cost": 2000,
+				"Item":{
+					"Id": 329,
 					"Meta": 0
 				}
 			},
@@ -223,11 +229,16 @@
 			"spammer":{
 				"Name": "Spammer",
 				"Description":[
-					"§7Double base gold reward on",
-					"§7targets you've shot an",
-					"§7arrow in.",
-					"",
-					"§6+2g §7on assists."
+					"§o§eSpammer§r",
+					"§5§o§7Get §f3 arrows §7on arrow hit.",
+					"§5§o",
+					"§5§o§7Gain §63x base gold §7reward on",
+					"§5§o§7targets you've shot an arrow in.",
+					"§5§o",
+					"§5§o§7Earn §6+2g§7 on assists.",
+					"§5§o",
+					"§5§o§7Cost: §64,000g",
+					"§5§o§eClick to purchase!"
 				],
 				"Cost":4000,
 				"Item":{
@@ -630,6 +641,20 @@
 				},
 				"Category":"Minor"
 			},
+			"withercraft":{
+				"Name": "Rush",
+				"Description":[
+					"§5§o§7Gain §e1.5% Speed.",
+					"§5§o§7Max §e+15% Speed."
+				],
+				"Interval":5,
+				"Cost":25000,
+				"Item":{
+					"Id": 353,
+					"Meta": 0
+				},
+				"Category":"Minor"
+			},
 			"feast":{
 				"Name": "Feast",
 				"Description":[
@@ -852,22 +877,6 @@
 				},
 				"Category":"Minor"
 			},
-			"withercraft":{
-				"Name": "Withercraft",
-				"Description":[
-					"§7Consume §52 Chunks of Vile",
-					"§7to regain §c1 life §7on",
-					"§7the §7item in the §dMystic",
-					"§dWell§7."
-				],
-				"Interval":25,
-				"Cost":70000,
-				"Item":{
-					"Id": 381,
-					"Meta": 0
-				},
-				"Category":"Minor"
-			},
 			"overdrive":{
 				"Name": "Overdrive",
 				"Description":[
@@ -971,18 +980,21 @@
 				"Category":"Mega"
 			},
 			"grand_finale":{
-				"Name": "Grand Finale",
+				"Name": "Magnum Opus",
 				"Description":[
-					"§7Triggers on: §c100 kills",
-					"",
-					"§7On trigger:",
-					" §a■ §7EXPLODE!!!",
-					"",
-					"§7BUT:",
-					" §c■ §7Die.",
-					"",
-					"§7On death:",
-					" §e■ §7Earn §e1 Renown§7."
+					"§5§o§7Triggers on: §c50 kills",
+					"§5§o",
+					"§5§o§7On trigger:",
+					"§5§o§a■ §7EXPLODE!!!",
+					"§5§o",
+					"§5§o§7BUT:",
+					"§5§o§c■ §7Die.",
+					"§5§o",
+					"§5§o§7On death:",
+					"§5§o§e■ §7Earn §e1 Renown§7.",
+					"§5§o§7§e■ §7Consume §54 Chunks of Vile",
+					"§5§o§5§7to fix §c4 lives §7on the item",
+					"§5§o§7in the §dMystic Well§7."
 				],
 				"Cost":40000,
 				"Item":{
@@ -1482,14 +1494,15 @@
 			"promotion":{
 				"Name": "Promotion!!",
 				"Description":[
-					"§7Upgrade the \"Assistant (to the)",
-					"§7Streaker\" perk:",
-					"",
-					"§aAssistant Streaker",
-					"§7Don't lose §clives §7on",
-					"§7mystic items from dying",
-					"§7after activating a",
-					"§cmegastreak§7."
+					"§5§o§7Upgrade the \"Assistant (to the)",
+					"§5§o§7Streaker\" perk:",
+					"§5§o",
+					"§5§o§aAssistant Streaker",
+					"§5§o§7Earn §6+2g §7and §b+15% XP",
+					"§5§o§b§7from kills and assists.",
+					"§5§o",
+					"§5§o§7Gain §e+1 §7streak every §c4th",
+					"§5§o§ckill§7."
 				],
 				"Levels":[""],
 				"Costs":[30],
@@ -1581,14 +1594,34 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[10],
 				"Item":{
 					"Id": 297,
 					"Meta": 0
+				},
+				"Category":"Perk"
+			},
+			"unlock_perk_coop_cat":{
+				"Name": "Perk unlock: Co-op Cat",
+				"Description":[
+					"§7Required level: §9[§5§l90§r§9]",
+					"§7Cost: §66,000g",
+					"",
+					"§7Earn §b+50% XP §7and",
+					"§6+50%g §7on all assists.",
+					"",
+					"§7§oThis is a perk unlock.",
+					"§7§oYou still have to purchase",
+					"§7§othe perk in the upgrades shop."
+				],
+				"Levels":[""],
+				"Costs":[20],
+				"Item":{
+					"Id": 383,
+					"Meta": 98
 				},
 				"Category":"Perk"
 			},
@@ -1604,8 +1637,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[10],
@@ -1627,8 +1659,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[15],
@@ -1651,8 +1682,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[15],
@@ -1680,8 +1710,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[20],
@@ -1694,18 +1723,23 @@
 			"unlock_perk_assistant_streaker":{
 				"Name": "Perk unlock: Assistant (to the) Streaker",
 				"Description":[
-					"§7Required level: §e[50]",
-					"§7Cost: §68,000g",
-					"",
-					"§eAssistant Streaker",
-					"§7Assists count their",
-					"§aparticipation §7towards",
-					"§7killstreaks.",
-					"",
-					"§7§oThis is a perk unlock.",
-					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§5§o§7Required level: §e[§e50§e]",
+					"§5§o§7Cost: §68,000g",
+					"§5§o",
+					"§5§o§eAssistant Streaker",
+					"§5§o§7Assists count their",
+					"§5§o§7§aparticipation §7towards",
+					"§5§o§7killstreaks.",
+					"§5§o",
+					"§5§o§7Earn §6+2g §7and §b+15% XP",
+					"§5§o§b§7from kills and assists.",
+					"§5§o",
+					"§5§o§7Gain §e+1 §7streak every §c4th",
+					"§5§o§ckill§7.",
+					"§5§o",
+					"§5§o§7§7§oThis is a perk unlock. You",
+					"§5§o§7§ostill have to purchase the perk",
+					"§5§o§7§oin the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[15],
@@ -1728,8 +1762,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[25],
@@ -1753,36 +1786,13 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[20],
 				"Item":{
 					"Id": 301,
 					"Meta": "FFFFFF"
-				},
-				"Category":"Perk"
-			},
-			"unlock_perk_coop_cat":{
-				"Name": "Perk unlock: Co-op Cat",
-				"Description":[
-					"§7Required level: §e[§5§l90§r§e]",
-					"§7Cost: §66,000g",
-					"",
-					"§7Earn §b+50% XP §7and",
-					"§6+50%g §7on all assists.",
-					"",
-					"§7§oThis is a perk unlock.",
-					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
-				],
-				"Levels":[""],
-				"Costs":[20],
-				"Item":{
-					"Id": 383,
-					"Meta": 98
 				},
 				"Category":"Perk"
 			},
@@ -1804,8 +1814,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[30],
@@ -1828,8 +1837,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[10],
@@ -1853,8 +1861,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[40],
@@ -1878,8 +1885,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[40],
@@ -1899,8 +1905,7 @@
 					"",
 					"§7§oThis is a perk unlock.",
 					"§7§oYou still have to purchase",
-					"§7§othe perk in the upgrades",
-					"§7§oshop."
+					"§7§othe perk in the upgrades shop."
 				],
 				"Levels":[""],
 				"Costs":[45],
@@ -1918,8 +1923,10 @@
 					"§7Full iron armor set.",
 					"",
 					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
+					"§7§ofor purchase in the items shop (except helmet).",
+					"",
+					"§7§oWill become available",
+					"§7§ofor purchase in the items shop."
 				],
 				"Levels":[""],
 				"Costs":[5],
@@ -1937,8 +1944,7 @@
 					"§7It's an item.",
 					"",
 					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
+					"§7§ofor purchase in the items shop."
 				],
 				"Levels":[""],
 				"Costs":[5],
@@ -1956,8 +1962,7 @@
 					"§7Auto-equips on buy!",
 					"",
 					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
+					"§7§ofor purchase in the items shop."
 				],
 				"Levels":[""],
 				"Costs":[20],
@@ -1975,8 +1980,7 @@
 					"§7It's an item.",
 					"",
 					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
+					"§7§ofor purchase in the items shop."
 				],
 				"Levels":[""],
 				"Costs":[10],
@@ -1997,8 +2001,7 @@
 					"§7Earn §6+50% gold §7from claimed bounties.",
 					"",
 					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
+					"§7§ofor purchase in the items shop."
 				],
 				"Levels":[""],
 				"Costs":[10],
@@ -2011,41 +2014,21 @@
 			"unlock_first_aid_egg":{
 				"Name": "Shop unlock: First-Aid Egg",
 				"Description":[
-					"",
-					"§6First-Aid Egg",
-					"§eSpecial item",
-					"§7Heals §c2.5❤",
-					"§720 seconds cooldown.",
-					"",
-					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
+					"§5§o",
+					"§5§o§6First-Aid Egg",
+					"§5§o§7Heals §c2.5❤",
+					"§5§o§730 seconds cooldown.",
+					"§5§o§7-5 seconds on kill.",
+					"§5§o§8Lose speed on use.",
+					"§5§o",
+					"§5§o§7§7§oWill become available for",
+					"§5§o§7§opurchase in the items shop."
 				],
 				"Levels":[""],
 				"Costs":[15],
 				"Item":{
 					"Id": 383,
 					"Meta": 96
-				},
-				"Category":"Shop"
-			},
-			"unlock_golden_pickaxe":{
-				"Name": "Shop unlock: Golden Pickaxe",
-				"Description":[
-					"§7Efficiency VII",
-					"",
-					"§6Golden Pickaxe",
-					"§7It's an item.",
-					"",
-					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
-				],
-				"Levels":[""],
-				"Costs":[10],
-				"Item":{
-					"Id": 285,
-					"Meta": 0
 				},
 				"Category":"Shop"
 			},
@@ -2058,8 +2041,7 @@
 					"§7It's an item.",
 					"",
 					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
+					"§7§ofor purchase in the items shop."
 				],
 				"Levels":[""],
 				"Costs":[20],
@@ -2078,8 +2060,7 @@
 					"§7where you stand.",
 					"",
 					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
+					"§7§ofor purchase in the items shop."
 				],
 				"Levels":[""],
 				"Costs":[20],
@@ -2100,8 +2081,7 @@
 					"§7pants",
 					"",
 					"§7§oWill become available",
-					"§7§ofor purchase in the items",
-					"§7§oshop."
+					"§7§ofor purchase in the items shop."
 				],
 				"Levels":[""],
 				"Costs":[20],
@@ -2154,8 +2134,8 @@
 				"Description":[
 					"§7Includes:",
 					"§8- §6Khanate",
+					"§8- §6Rush",
 					"§8- §6Gold Nano-factory",
-					"§8- §6Withercraft",
 					"",
 					"§7Megastreak: §6Highlander"
 				],
@@ -2168,14 +2148,14 @@
 				"Category":"Killstreaks"
 			},
 			"grand_finale_bundle":{
-				"Name": "Killstreaks: Grand Finale",
+				"Name": "Killstreaks: Magnum Opus",
 				"Description":[
 					"§7Includes:",
 					"§8- §eLeech",
 					"§8- §eAssured Strike",
 					"§8- §eApostle to RNGesus",
 					"",
-					"§7Megastreak: §eGrand Finale"
+					"§7Megastreak: §eMagnum Opus"
 				],
 				"Levels":[""],
 				"Costs":[60],
@@ -2255,7 +2235,22 @@
 			{"Multiplier": 101, "TotalXp": 6660950, "SumXp": 51292730, "GoldReq": 14140000, "Renown": 100, "Color": "WHITE", "ColorCode":"§f"},
 			{"Multiplier": 101, "TotalXp": 6660950, "SumXp": 57953680, "GoldReq": 16160000, "Renown": 100, "Color": "WHITE", "ColorCode":"§f"},
 			{"Multiplier": 101, "TotalXp": 6660950, "SumXp": 64614630, "GoldReq": 18180000, "Renown": 100, "Color": "WHITE", "ColorCode":"§f"},
-			{"Multiplier": 101, "TotalXp": 6660950, "SumXp": 71275580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"}
+			{"Multiplier": 101, "TotalXp": 6660950, "SumXp": 71275580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 200, "TotalXp": 13190000, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"},
+			{"Multiplier": 0, "TotalXp": 0, "SumXp": 84465580, "GoldReq": 0, "Renown": 100, "Color": "AQUA", "ColorCode":"§b"}
 		],
 		"Mystics": {
 			"less_damage_nearby_players": {
