@@ -6,8 +6,6 @@ import frontendTools from '../../scripts/frontendTools';
 import Text from '../Minecraft/Text';
 import axios from 'axios';
 
-const adIndex = Math.floor(Math.random() * 6);
-
 const Home = (props) => {
   const [players, setPlayers] = useState();
 
@@ -47,21 +45,6 @@ const Home = (props) => {
         margin: 'auto',
       }}>
         {players?players.map((player, index) => {
-          if(index === adIndex) return (
-            <TitlelessCard key={player.uuid} style={{width:'410px',margin:'10px',display:'inline-block'}}>
-              <Link href="https://discord.gg/wVGdGWcVdh">
-                <img 
-                  src={`/harry.gif`} 
-                  style = {imgStyle}
-                  alt = ''
-                />
-                <div key={player.uuid} style={textContainerStyle}>
-                  <Text style={{fontSize:'110%'}} raw={`§eJoin mc.pitsandbox.io!`}/><br/>
-                  <Text raw="Fast paced gameplay to test mystics, have fun 1v1s, and meet a new community." />
-                </div>
-              </Link>
-            </TitlelessCard>
-          );
           return (
             <TitlelessCard key={player.uuid}style={{width:'410px',margin:'10px',display:'inline-block'}}>
               <Link href={`/players/${player.uuid}`}>

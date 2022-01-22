@@ -25,12 +25,6 @@ function Nav(props){
             {buttons.map((info,index)=>(
                 <Link key={Date.now()+index} href={info.path} className={index===selected?'active':''}>{info.name}</Link>
             ))}
-            <Link
-                href={'https://discord.gg/wVGdGWcVdh'}
-                style={{float: 'right', width: '250px'}}
-            >
-                {'Join mc.pitsandbox.io!'}
-            </Link>
         </div>
     );
 } export default withRouter(Nav);
