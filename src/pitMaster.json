@@ -158,20 +158,19 @@
 				}
 			},
 			"endless_quiver":{
-				"Name": "Insurance",
+				"Name": "Bonk!",
 				"Description":[
-					"§o§eInsurance§r",
-					"§5§o§7If you die within §a2s §7of",
-					"§5§o§7being damaged, §cfull heal §7and",
-					"§5§o§7gain §9Resistance II §7(4s).",
-					"§5§o§7§820s cooldown.",
+					"§o§eBonk!§r",
+					"§5§o§7The first hit you receive from a",
+					"§5§o§7player is blocked and grants",
+					"§5§o§9Resistance I §7(1s).",
 					"§5§o",
 					"§5§o§7Cost: §62,000g",
 					"§5§o§eClick to purchase!"
 				],
 				"Cost": 2000,
 				"Item":{
-					"Id": 329,
+					"Id": 145,
 					"Meta": 0
 				}
 			},
@@ -1395,6 +1394,21 @@
 				"Costs":[20],
 				"Item":{
 					"Id": 396,
+					"Meta": 0
+				},
+				"Category":"Upgrade"
+			},
+			"own_carpentry":{
+				"Name": "Do Your Own Carpentry",
+				"Description":[
+					"§7Increase odds for §5vile in",
+					"§7contracts and gain §5+1 from",
+					"§7them."
+				],
+				"Levels":[""],
+				"Costs":[5],
+				"Item":{
+					"Id": 126,
 					"Meta": 0
 				},
 				"Category":"Upgrade"
