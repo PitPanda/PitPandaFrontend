@@ -2245,12 +2245,12 @@
 			{"Multiplier": 1250, "TotalXp": 82437500, "SumXp": 361455580, "GoldReq": 2000000, "Renown": 100, "Color": "DARK_BLUE", "ColorCode":"§1"},
 			{"Multiplier": 1500, "TotalXp": 98925000, "SumXp": 460380580, "GoldReq": 2000000, "Renown": 100, "Color": "DARK_BLUE", "ColorCode":"§1"},
 			{"Multiplier": 1750, "TotalXp": 115412500, "SumXp": 575793080, "GoldReq": 2000000, "Renown": 100, "Color": "DARK_BLUE", "ColorCode":"§1"},
-			{"Multiplier": 2000, "TotalXp": 131900000, "SumXp": 707693080, "GoldReq": 2000000, "Renown": 100, "Color": "DARK_BLUE", "ColorCode":"§1"},
-			{"Multiplier": 3000, "TotalXp": 197850000, "SumXp": 905543080, "GoldReq": 2000000, "Renown": 100, "Color": "DARK_BLUE", "ColorCode":"§1"},
-			{"Multiplier": 5000, "TotalXp": 329750000, "SumXp": 1235293080, "GoldReq": 2000000, "Renown": 100, "Color": "DARK_BLUE", "ColorCode":"§1"},
-			{"Multiplier": 10000, "TotalXp": 659500000, "SumXp": 1894793080, "GoldReq": 2000000, "Renown": 100, "Color": "DARK_BLUE", "ColorCode":"§1"},
-			{"Multiplier": 50000, "TotalXp": 3297500000, "SumXp": 5192293080, "GoldReq": 2000000, "Renown": 100, "Color": "DARK_BLUE", "ColorCode":"§1"},
-			{"Multiplier": 100000, "TotalXp": 6595000000, "SumXp": 11787293080, "GoldReq": 0, "Renown": 100, "Color": "DARK_BLUE", "ColorCode":"§1"}
+			{"Multiplier": 2000, "TotalXp": 131900000, "SumXp": 707693080, "GoldReq": 2000000, "Renown": 100, "Color": "BLACK", "ColorCode":"§0"},
+			{"Multiplier": 3000, "TotalXp": 197850000, "SumXp": 905543080, "GoldReq": 2000000, "Renown": 100, "Color": "BLACK", "ColorCode":"§0"},
+			{"Multiplier": 5000, "TotalXp": 329750000, "SumXp": 1235293080, "GoldReq": 2000000, "Renown": 100, "Color": "BLACK", "ColorCode":"§0"},
+			{"Multiplier": 10000, "TotalXp": 659500000, "SumXp": 1894793080, "GoldReq": 2000000, "Renown": 100, "Color": "BLACK", "ColorCode":"§0"},
+			{"Multiplier": 50000, "TotalXp": 3297500000, "SumXp": 5192293080, "GoldReq": 2000000, "Renown": 100, "Color": "BLACK", "ColorCode":"§0"},
+			{"Multiplier": 100000, "TotalXp": 6595000000, "SumXp": 11787293080, "GoldReq": 0, "Renown": 100, "Color": "BLACK", "ColorCode":"§0"}
 		],
 		"Mystics": {
 			"less_damage_nearby_players": {
