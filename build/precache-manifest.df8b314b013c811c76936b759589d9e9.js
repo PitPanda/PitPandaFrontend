@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6385cfca28f9daaf73fed606860b2302",
+    "revision": "eac01662b72f7a90b626a4cf7387f738",
     "url": "/index.html"
   },
   {
-    "revision": "b13fcc1bd51c7d84cdd9",
-    "url": "/static/css/main.c467ef88.chunk.css"
+    "revision": "71c04fbd509bb054130f",
+    "url": "/static/css/main.5c13de6b.chunk.css"
   },
   {
-    "revision": "db51ecc2857d6d618cad",
-    "url": "/static/js/2.12b620db.chunk.js"
+    "revision": "d5919d7a3b5ef826e7e1",
+    "url": "/static/js/2.471192fb.chunk.js"
   },
   {
     "revision": "1b16ba060c084a02eee6717f9a7fc6f8",
-    "url": "/static/js/2.12b620db.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.471192fb.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b13fcc1bd51c7d84cdd9",
-    "url": "/static/js/main.3dbedf09.chunk.js"
+    "revision": "71c04fbd509bb054130f",
+    "url": "/static/js/main.92d28533.chunk.js"
   },
   {
     "revision": "c4fd86af7a9909ca25e8",
@@ -28,12 +28,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Minecraft-Regular.2c900306.otf"
   },
   {
-    "revision": "375c4f3bd35840adee24a1535bbb2018",
-    "url": "/static/media/Roboto-Bold-webfont.375c4f3b.svg"
-  },
-  {
     "revision": "3dcc0e0f2287e2e955cd8ce8cb08dae0",
     "url": "/static/media/Roboto-Bold-webfont.3dcc0e0f.ttf"
+  },
+  {
+    "revision": "73d4f283372338742066c979bf9bbd22",
+    "url": "/static/media/Roboto-Bold-webfont.73d4f283.svg"
   },
   {
     "revision": "8b18d65d6824460ad37616723e493bcd",
@@ -44,10 +44,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Roboto-Bold-webfont.ecdd509c.eot"
   },
   {
-    "revision": "3581138bd3477ae13eca1ac9e584220a",
-    "url": "/static/media/Roboto-Light-webfont.3581138b.svg"
-  },
-  {
     "revision": "816d43bc217485bc52e309cd1b356880",
     "url": "/static/media/Roboto-Light-webfont.816d43bc.woff"
   },
@@ -56,8 +52,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Roboto-Light-webfont.a990f611.eot"
   },
   {
+    "revision": "ae03617c87fd538d00b85155c559864b",
+    "url": "/static/media/Roboto-Light-webfont.ae03617c.svg"
+  },
+  {
     "revision": "d8472f7b6012706fc028021e5a654843",
     "url": "/static/media/Roboto-Light-webfont.d8472f7b.ttf"
+  },
+  {
+    "revision": "1d45bc40211734dc3226d06bbc836d7f",
+    "url": "/static/media/Roboto-Regular-webfont.1d45bc40.svg"
   },
   {
     "revision": "30799efa5bf74129468ad4e257551dc3",
@@ -70,10 +74,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "7f1320f7ec4f6716054d88c33235d17b",
     "url": "/static/media/Roboto-Regular-webfont.7f1320f7.ttf"
-  },
-  {
-    "revision": "da61d7ef302b8bf871dd0ae796a52f33",
-    "url": "/static/media/Roboto-Regular-webfont.da61d7ef.svg"
   },
   {
     "revision": "6407c78d63142484f36fc82410b33843",
