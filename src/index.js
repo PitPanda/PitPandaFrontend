@@ -12,6 +12,9 @@ import KeyInfo from './Components/Apps/KeyInfo';
 import axios from 'axios';
 import { RecoilRoot} from 'recoil';
 
+// allows for development locally
+axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+
 axios.interceptors.request.use(config => {
     const key = window.localStorage.getItem('apikey');
     if(key) config.headers['X-API-Key'] = key;
