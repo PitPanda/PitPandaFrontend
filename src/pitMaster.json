@@ -5606,8 +5606,8 @@
 				"short": "Launcher Launches"
 			},
 			"enderchestOpened": {
-				"displayName": "Top Enderchests Opened",
-				"short": "Enderchests Opened"
+				"displayName": "Top Ender Chests Opened",
+				"short": "Ender Chests Opened"
 			},
 			"diamondItemsPurchased": {
 				"displayName": "Top Diamond Items Purchased",

@@ -76,7 +76,7 @@ class Player extends React.Component {
                       return (
                         <StaticCard title={upperFirst(display.type)} key={key} >
                           <div style={{maxWidth:'300px'}}>
-                            This player has been marked as {display.type} by the <a href="https://discord.gg/CdTmYrG">Trade Center Discord</a> staff.
+                            This player has been marked as a {display.type} by the <a href="https://discord.gg/CdTmYrG">Trade Center Discord</a> staff.
                             {display.notes?<><br/><br/>Trade Center Staff notes:<br/> {display.notes}</>:''}
                             {display.discordid?<><br/><br/>Discord ID: <br/>{display.discordid}</>:''}
                             {display.main?<><br/><br/>Main:<br/><PlayerList players={[{tag:display.main}]} instant={true} /></>:''}
@@ -145,7 +145,7 @@ class Player extends React.Component {
                 margin: '20px',
                 minWidth: '600px'
               }}>
-                <TabbedCard tabs={["Inventory","Enderchest","Stash/Well"]} content={[
+                <TabbedCard tabs={["Inventory","Ender Chest","Stash/Well"]} content={[
                   (
                     <div key={`Inventory-${this.state.user.uuid}`}>
                       <Inventory key='main' inventory={this.state.user.inventories.main} rows={4} colors={true} style={{marginRight:'3px'}}/>
