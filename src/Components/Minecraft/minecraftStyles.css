@@ -64,8 +64,12 @@
   filter: grayscale(100%);
 }
 
+.item.unlockable:has(.item_:not(.darken, .item_0)) {
+  background-color: #555;
+}
+
 .darken {
-  filter: brightness(70%) grayscale(100%);
+  filter: grayscale(100%) brightness(20%);
 }
 
 .item:hover .itemcontainer, .item.shown .itemcontainer {

@@ -10,6 +10,9 @@ import PlayerList from '../PlayerList/PlayerList';
 import LeaderboardPositions from '../LeaderboardPositions/LeaderboardPositions';
 import frontendTools from '../../scripts/frontendTools';
 import { withRouter } from 'react-router-dom';
+import external from '../../Images/svg/external.svg';
+import nadeshiko from '../../Images/nadeshiko_logo.png';
+
 import axios from 'axios';
 
 const upperFirst = str => str.charAt(0).toUpperCase() + str.substring(1);
@@ -63,11 +66,15 @@ class Player extends React.Component {
                     />
                     <div key={this.state.user.uuid} style={{verticalAlign:'top', display:'inline-block', marginTop:'7px',marginLeft:'10px', fontSize:'17px'}}>
                       <Text style={{fontSize:'110%'}} raw={this.state.user.formattedName}/><br/>
-                      <Text raw={`Level: ${this.state.user.formattedLevel}`}/><br/>
-                      <Text raw={`Gold: §6${this.state.user.currentGold.toLocaleString()}g`}/><br/>
-                      <Text raw={`Played: §f${frontendTools.minutesToString(this.state.user.playtime)}`}/>
+                      Level: <Text raw={`${this.state.user.formattedLevel}`}/><br/>
+                      Gold: <Text raw={`§6${this.state.user.currentGold.toLocaleString()}g`}/><br/>
+                      Played: <Text raw={`§f${frontendTools.minutesToString(this.state.user.playtime)}`}/>
                     </div>
+
                   </div>
+
+                  <a className="hypixel-stats-link" href={`https://nadeshiko.io/player/${this.state.user.uuid}`} target="_blank" rel="noopener noreferrer"><img className="hypixel-stats-logo" src={nadeshiko} alt="nadeshiko logo" ></img> Hypixel Stats <img className="hypixel-stats-logo" src={external} alt="External link"></img></a>
+
                 </StaticCard>
                 {this.state.user.displays.map((display,i,a) => {
                   const key = `${this.state.user.uuid}-${display.display_type}-${i}`;
@@ -114,10 +121,14 @@ class Player extends React.Component {
                 })}
                 <StaticCard title="Status" content={
                   <div style={{fontSize:'16px'}}>
-                    <Text className='text-title' style={{color:this.state.user.online?'green':'red'}} text={this.state.user.online?'Online':'Offline'}/><br/>
-                    <Text text={`Last seen in The Pit ${frontendTools.timeSince(this.state.user.lastSave)} ago`}/><br/>
-                    {this.state.user.online ? '' : <><Text text={`Last seen on Hypixel ${frontendTools.timeSince(this.state.user.lastLogout)} ago`}/><br/></>}
-                    {this.state.user.bounty?<Text raw={`Bounty: §6${this.state.user.bounty.toLocaleString()}g`}/>:''}
+                    <div className='text-title' style={{color:this.state.user.online?'green':'red'}}>
+                      {this.state.user.online ? 'Online' : 'Offline'}
+                    </div>
+                    <div>Last seen in The Pit {frontendTools.timeSince(this.state.user.lastSave)} ago</div>
+                    {this.state.user.online ? '' : <>
+                      <div>Last seen on Hypixel {frontendTools.timeSince(this.state.user.lastLogout)} ago</div>
+                    </>}
+                    {this.state.user.bounty ? <div>Bounty: <span className={`text-bounty ${this.state.user.bounty >= 5000 ? 'bounty-big' : ''}`}>{this.state.user.bounty.toLocaleString()}g</span></div> : ''}
                   </div>
                 }/>
                 <StaticCard title="Progress" content={
@@ -136,7 +147,7 @@ class Player extends React.Component {
                     />
                   </div>
                 }/>
-                <StaticCard title={<>Leaderboard Positions</>} key={'positions'+this.state.user.uuid}>
+                <StaticCard title={<>Rankings</>} key={'positions'+this.state.user.uuid}>
                   <LeaderboardPositions uuid={this.state.user.uuid} />
                 </StaticCard>
               </div>
@@ -145,7 +156,7 @@ class Player extends React.Component {
                 margin: '20px',
                 minWidth: '600px'
               }}>
-                <TabbedCard tabs={["Inventory","Ender Chest","Stash/Well"]} content={[
+                <TabbedCard tabs={["Inventory","Ender Chest","Stashes"]} content={[
                   (
                     <div key={`Inventory-${this.state.user.uuid}`}>
                       <Inventory key='main' inventory={this.state.user.inventories.main} rows={4} colors={true} style={{marginRight:'3px'}}/>
@@ -157,47 +168,48 @@ class Player extends React.Component {
                     </div>
                   ),(
                     <div key={`Stash/Well-${this.state.user.uuid}`}>
-                      <Inventory key='stash' inventory={this.state.user.inventories.stash} rows={2} colors={true} style={{marginRight:'3px'}}/>
-                      <Inventory key='well' style={{verticalAlign:'top'}} inventory={this.state.user.inventories.well} width={1} rows={2} colors={true}/>
+                      <Inventory key='well' style={{verticalAlign:'top'}} inventory={this.state.user.inventories.well} width={2} rows={1} colors={true} hideIfEmpty={true} showTitle={true} title='Well'/>
+                      <Inventory key='spireStash' inventory={this.state.user.inventories.spireStash} width={2} rows={1} colors={true} hideIfEmpty={true} showTitle={true} title='Spire Stash'/>
+                      <Inventory key='stash' inventory={this.state.user.inventories.stash} rows={2} colors={true} style={{marginRight:'3px'}} hideIfEmpty={true} showTitle={true} title='Stash'/>
                     </div>
                   )
                 ]}/>
-                <TabbedCard tabs={["Perk Shop","Renown Shop"]} content={[
+                <StaticCard title="Statistics" content={
+                  <div key={`General-${this.state.user.uuid}`}>
+                    <Inventory key='genstats' inventory={this.state.user.inventories.generalStats} width={this.state.user.inventories.generalStats.length} style={{margin:'0 auto', display:'block'}}/>
+                  </div>
+                }/>
+                <TabbedCard tabs={["Perks & Passives","Renown"]} content={[
                   (
                     <div key={`Perk-${this.state.user.uuid}`}>
                       <Inventory key='perks' inventory={this.state.user.inventories.perks} width={this.state.user.inventories.perks.length} style={{margin:'0 auto', display:'block'}}/>
                       <hr/>
                       <Inventory key='killstreaks' inventory={this.state.user.inventories.killstreaks} width={this.state.user.inventories.killstreaks.length} style={{margin:'0 auto', display:'block'}}/>
                       <hr/>
-                      <Inventory key='upgrades' inventory={this.state.user.inventories.upgrades} width={7} style={{margin:'0 auto', display:'block'}}/>
+                      <Inventory key='upgrades' inventory={this.state.user.inventories.upgrades} width={7} style={{margin:'0 auto', display:'block'}} unlockable={true}/>
                     </div>
                   ),(
                     <div key={`Renown-${this.state.user.uuid}`}>
-                      <Inventory key='renownshop' inventory={this.state.user.inventories.renownShop} width={7} style={{margin:'0 auto', display:'block'}}/>
+                      <Inventory key='renownshop' inventory={this.state.user.inventories.renownShop} width={7} style={{margin:'0 auto', display:'block'}} unlockable={true}/>
                     </div>
                   )
                 ]}/>
-                <StaticCard title="General Stats" content={
-                  <div key={`General-${this.state.user.uuid}`}>
-                    <Inventory key='genstats' inventory={this.state.user.inventories.generalStats} width={this.state.user.inventories.generalStats.length} style={{margin:'0 auto', display:'block'}}/>
-                  </div>
-                }/>
                 <NumberedCard key={this.state.user.uuid} content={this.state.user.prestiges.map((prestige,index)=>(
                   <div>
                     {prestige.timestamp?<h3 style={{marginBottom:'10px'}}>Unlocked on {(new Date(prestige.timestamp)).toLocaleString()}</h3>:''}
-                    {prestige.gold&&this.state.user.prestiges.length-1!==index?<h3 style={{marginBottom:'10px'}}>Completed with {frontendTools.abbrNum(prestige.gold,2)} gold earned</h3>:''}
+                    {prestige.gold&&this.state.user.prestiges.length-1!==index?<h3 style={{marginBottom:'10px'}}>Completed with {frontendTools.abbrNum(prestige.gold,2)}g earned</h3>:''}
                     <table style={{width:'100%'}}>
                       <tbody>
                         <tr>
-                        <td><strong>Type</strong></td><td><strong>Upgrade</strong></td><td><strong>Unlock time</strong></td>
+                        <td><strong>Type</strong></td><td><strong>Upgrade</strong></td><td><strong>Unlocked</strong></td>
                         </tr>
                         {prestige.unlocks.length>0?prestige.unlocks.slice().reverse().map((item,i)=>
                           <tr key={i}>
-                            <td>{item.type}</td><td>{item.displayName} {(typeof item.tier === 'number')?item.tier+1:''}</td><td>{(new Date(item.timestamp)).toLocaleString()}</td>
+                            <td>{item.type}</td><td>{item.displayName} {(typeof item.tier === 'number')?item.tier+1:''}</td><td className='tabular'>{(new Date(item.timestamp)).toLocaleString()}</td>
                           </tr>
                         ):(
                           <tr>
-                            <td>No Unlocks this Prestige</td><td></td><td></td>
+                            <td>No unlocks this prestige</td><td></td><td></td>
                           </tr>
                         )}
                       </tbody>

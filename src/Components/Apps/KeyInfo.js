@@ -31,7 +31,7 @@ function KeyInfo(props){
     return (
         <div style={{ margin:'auto', width:'1020px' }}>
             <div id="search-header" style={{ textAlign:'center' }}>
-                <h1 className="page-header">PitPanda API Keys</h1>
+                <h1 className="page-header">Pit Panda API Keys</h1>
             </div>
             <div style={{ display:'inline-block', marginRight:'20px', width:'350px' }}>
                 <StaticCard title='Input Key'>
@@ -67,14 +67,14 @@ function KeyInfo(props){
                     />
                 </StaticCard>
                 <StaticCard title="About"> 
-                    This page is used to verify PitPanda API Keys and save it in your browser so future requests will use it.
+                    This page is used to verify Pit Panda API Keys and save it in your browser so future requests will use it.
                 </StaticCard>
                 <StaticCard title="How">
                 You can generate your own API key by downloading <a href="https://chattriggers.com/modules/v/PitPandaApiKeyManager">this ChatTriggers module</a> and running <code style={codeStyle}>/pitpandapi new</code>.
                 </StaticCard>
                 <StaticCard title="Why"> 
-                    I created API Keys for PitPanda so they can be used as a form of authentication as they are linked to your Minecraft uuid. <br />
-                    For users that use a key I allow +33% more requests per minute, and 2x that for supporters.
+                    I created API Keys for Pit Panda so they can be used as a form of authentication as they are linked to your Minecraft UUID. <br />
+                    For users that use a key, I allow +33% more requests per minute, and 2× that for Patreon supporters.
                 </StaticCard>
             </div>
             <div style={{ display:'inline-block', verticalAlign:'top', width:'650px' }}>
@@ -83,7 +83,7 @@ function KeyInfo(props){
                         <StaticCard title='Key Info'>
                             <strong>Owner UUID</strong>: {keyInfo.owner} <br />
                             <strong>Request Limit</strong>: {keyInfo.limit.toLocaleString()} <br />
-                            <strong>Lifetime used</strong>: {keyInfo.uses.toLocaleString()} <br />
+                            <strong>Lifetime Used</strong>: {keyInfo.uses.toLocaleString()} <br />
                         </StaticCard>
                         <StaticCard title='Key Owner'>
                             <img src={`https://pitpanda.rocks/api/images/profile/${keyInfo.owner}`} alt={keyInfo.owner} />

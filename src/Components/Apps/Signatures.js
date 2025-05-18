@@ -12,8 +12,8 @@ function Signatures(props){
             name: 'Profile',
         },
     ];
-    const [fieldPlayer, setFieldPlayer] = useState('McPqndq');
-    const [targetPlayer, setTargetPlayer] = useState('McPqndq');
+    const [fieldPlayer, setFieldPlayer] = useState('BrookeAFK');
+    const [targetPlayer, setTargetPlayer] = useState('BrookeAFK');
 
     const onChange = e => setFieldPlayer(e.target.value);
     const onKeyDown = e => {

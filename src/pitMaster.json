@@ -1117,7 +1117,7 @@
 				"Category":"Upgrade"
 			},
 			"xp_bump":{
-				"Name": "Xp Bump",
+				"Name": "XP Bump",
 				"Description":[
 					"§7Earn §b+$ kill XP§7."
 				],
@@ -5570,8 +5570,8 @@
 				"short": "Blocks Placed"
 			},
 			"kingsQuests": {
-				"displayName": "Top Kings Quest Completions",
-				"short": "Kings Quest Completions"
+				"displayName": "Top King's Quest Completions",
+				"short": "King's Quest Completions"
 			},
 			"sewerTreasures": {
 				"displayName": "Top Sewer Treasures Found",

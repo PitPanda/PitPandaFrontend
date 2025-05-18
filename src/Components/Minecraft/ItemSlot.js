@@ -29,7 +29,7 @@ function MinecraftItemSlot(props){
         desc = [...desc,'',(`§7Requires §${colors[nonce%5]} Pants §7to Tier 3`)];
     }
     return (
-        <div className={`item ${cls}`} onClick={props.onClick} onContextMenu={props.onContextMenu}>
+        <div className={`item ${cls} ${props.unlockable?'unlockable':''}`} onClick={props.onClick} onContextMenu={props.onContextMenu}>
             <MinecraftItemImg id={id} meta={meta} count={count}/>
             {
                 (name.length>0||desc.length>0)?

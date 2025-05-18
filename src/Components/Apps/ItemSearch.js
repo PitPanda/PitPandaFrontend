@@ -41,8 +41,8 @@ const ItemSearch = props => {
     }, [page, querystring, setItems])
 
     return (
-        <div style={{textAlign:'center'}}>
-            <h1 className="page-header" style={{marginBottom:'200px'}}>Pit Panda Mystic Search</h1>
+        <div className="search-header" style={{textAlign:'center'}}>
+            <h1 className="page-header">Pit Panda Mystic Search</h1>
             <QueryBox query={setQuerystring} baseQuery={props.match.params.query} />
             <div style={{display:'inline-block',textAlign:'left',margin:'20px'}}>
                 <StaticCard title="Results">

@@ -69,8 +69,8 @@ function Leaderboard(props) {
     }
 
     return (
-        <>
-            <h1 className="page-header" style={{ marginBottom: '100px', textAlign: 'center' }}>Pit Panda Leaderboards</h1>
+        <div className="search-header" style={{textAlign:'center'}}>
+            <h1 className="page-header">Pit Panda Leaderboards</h1>
             <div style={{ textAlign: 'left', width: '1020px', margin: 'auto' }}>
                 <div style={{ display: 'inline-block', verticalAlign: 'top', marginRight: '20px' }}>
                     <StaticCard title="Leaderboard Selector" style={{ width: '350px' }}>
@@ -79,7 +79,7 @@ function Leaderboard(props) {
                             return (
                                 <div key={key+target.category}>
                                     <Link href={`/leaderboard?category=${key}&page=0`}>
-                                        <Text raw={(key===target.category?'§f':'')+board.short}/>
+                                        <span className={(key===target.category?'leaderboard-selected':'')}>{board.short}</span>
                                     </Link>
                                 </div>
                             );
@@ -108,17 +108,17 @@ function Leaderboard(props) {
                 <StaticCard title={boards[data.loadedType].displayName} style={{ width: '650px', display: 'inline-block' }}>
                     {data.entires.map((user, index) => (
                         <div key={user.uuid} style={{ borderTop: (index !== 0 ? '2px solid #444' : 'none'), padding: '5px' }}>
-                            <Text style={{ width: '10%', textAlign: 'center', display: 'inline-block' }} text={`#${data.loadedPage * 100 + index + 1}`} />
+                            <span class="tabular" style={{ width: '10%', textAlign: 'center', display: 'inline-block' }}>{`${data.loadedPage * 100 + index + 1}`}</span>
                             <Link href={`/players/${user.uuid}`}>
                                 <Text raw={user.name} style={{ width: '50%' }} />
                             </Link>
-                            <Text text={boards[data.loadedType].transform(user.score)} style={{ width: '40%', textAlign: 'right', paddingRight: '8px' }} />
+                            <span class="tabular" style={{ width: '40%', textAlign: 'right', paddingRight: '8px', display: 'inline-block' }}>{boards[data.loadedType].transform(user.score)}</span>
                         </div>
                     ))}
                     {data.entires.length?<PageSelector start={1} current={Number(target.page)+1} linkBuilder={linkBuilder}/>:''}
                 </StaticCard>
             </div>
-        </>
+        </div>
     );
 }
 

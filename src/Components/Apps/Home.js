@@ -18,12 +18,6 @@ const Home = (props) => {
     })();
   }, [props]);
 
-  const imgStyle = {
-    width:'100px',
-    height:'100px',
-    display: 'inline-block',
-    borderRadius: '5%',
-  }
   const textContainerStyle = {
     verticalAlign:'top',
     display:'inline-block',
@@ -49,16 +43,17 @@ const Home = (props) => {
             <TitlelessCard key={player.uuid}style={{width:'410px',margin:'10px',display:'inline-block'}}>
               <Link href={`/players/${player.uuid}`}>
                 <img 
-                  src={`https://crafatar.com/avatars/${player.uuid}?overlay=true`} 
-                  style = {imgStyle}
+                  src={`https://crafatar.com/avatars/${player.uuid}?size=8&overlay=true`} 
+                  className = "home-player-avatar"
                   alt = ''
                 />
                 <div key={player.uuid} style={textContainerStyle}>
                   <Text style={{fontSize:'110%'}} raw={player.name}/><br/>
-                  <Text raw={`LVL: ${player.level}`}/><br/>
-                  <Text raw={`Gold: §6${player.gold.toLocaleString()}g`}/><br/>
-                  <Text raw={`Played: §f${frontendTools.minutesToString(player.playtime)}`}/>
+                  Level: <Text raw={`${player.level}`}/><br/>
+                  Gold: <Text raw={`§6${player.gold.toLocaleString()}g`}/><br/>
+                  Played: <Text raw={`§f${frontendTools.minutesToString(player.playtime)}`}/>
                 </div>
+
               </Link>
             </TitlelessCard>
           )

@@ -2,19 +2,23 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 
 const Link = withRouter((props) => {
+    const { isNavLink, ...restProps } = props;
     const onClick = e => {
-        if(e.ctrlKey || e.button === 1) window.open(`${props.location.origin}${props.href}`).focus();
-        else if((props.href!==props.location.pathname+props.location.search) && (e.button === 0)) {
-            if(props.href.startsWith('http')) window.open(`${props.href}`).focus();
+        if(e.ctrlKey || e.button === 1) window.open(`${restProps.location.origin}${restProps.href}`).focus();
+        else if((restProps.href!==restProps.location.pathname+restProps.location.search) && (e.button === 0)) {
+            if(restProps.href.startsWith('http')) window.open(`${restProps.href}`).focus();
             else {
-                props.history.push(props.href);
-                if(props.scroll) window.scrollTo(0,0);
+                restProps.history.push(restProps.href);
+                if(restProps.scroll) window.scrollTo(0,0);
             }
         }
     }
-    return (
-        <div onMouseDown={onClick} style={{display:'inline',cursor:'pointer',...props.style}} className={props.className||''}>
-            {props.children}
+
+    const baseStyle = isNavLink ? {}: {display:'inline',cursor:'pointer'};
+
+    return (    
+        <div onMouseDown={onClick} style={{...baseStyle,...restProps.style}} className={(restProps.className + (isNavLink ? ' nav-button' : ''))||''}>
+            {restProps.children}
         </div>
     );
 });

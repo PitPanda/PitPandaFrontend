@@ -4,7 +4,9 @@
     background-image: url(./imgs/blocks_items.png);
     display: inline-block;
     background-position:32px 32px;
+    image-rendering: pixelated;
   }
+  
   .item_1 {background-position:0px 0px;}
 .item_2 {background-position:-32px 0px;}
 .item_3 {background-position:-64px 0px;}
@@ -313,9 +315,32 @@
 .item_295 {background-position:-416px -128px;}
 .item_296 {background-position:-448px -128px;}
 .item_297 {background-position:-480px -128px;}
-.item_298 {background-position:-512px -128px;}
-.item_299 {background-position:-544px -128px;}
-.item_300 {background-position:288px -160px;}
+
+
+.masked_color_298 { mask-image: url(./imgs/helmet_mask.png);}
+.masked_overlay_298 { background-image: url(./imgs/helmet.png);}
+.masked_color_299 { mask-image: url(./imgs/chestplate_mask.png);}
+.masked_overlay_299 { background-image: url(./imgs/chestplate.png);}
+.masked_color_300 { mask-image: url(./imgs/leggings_mask.png);}
+.masked_overlay_300 { background-image: url(./imgs/leggings.png);}
+.masked_color_301 { mask-image: url(./imgs/boots_mask.png);}
+.masked_overlay_301 { background-image: url(./imgs/boots.png);}
+
+.masked_color {
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.masked_overlay {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: -32px;
+}
+
 .item_168 {background-position: -288px -768px;}
 .item_168_2 {background-position: -288px -768px;}
 
