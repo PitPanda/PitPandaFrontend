@@ -8,7 +8,7 @@ import boards from '../../scripts/leaderboards';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-const defaultCategory = 'gapples';
+const defaultCategory = 'xp';
 
 async function getLeaderboard({ category = defaultCategory, page = 0 }) {
     try {
@@ -84,24 +84,6 @@ function Leaderboard(props) {
                                 </div>
                             );
                         })}
-                    </StaticCard>
-                    <StaticCard title="Indexer Status" style={{ width: '350px' }}>
-                        <Text className='text-title' raw={'Status: ' + (indexData.online ? '§2Online' : '§4Offline')} /><br />
-                        {indexData.online ? (
-                            <>
-                                <Text raw={`Players Queued: §6${indexData.remaingCount.toLocaleString()}`} /><br />
-                                <Text raw={`Daily Players Indexed: §6${indexData.dailyCount.toLocaleString()}`} /><br />
-                                <Text raw={`Rate: §6${Math.round(1e5/indexData.checkTimeout)/1e2} players/sec`} /><br />
-                                <Text raw={`Daily Queue Time: §6${(()=>{
-                                    const seconds = Math.round(indexData.dailyCount*indexData.checkTimeout/1e3);
-                                    return `${Math.floor(seconds/3600)}h ${Math.floor((seconds%3600)/60)}m`;
-                                })()}`} /><br />
-                                <Text raw={`Remaining Queue Time: §6${(()=>{
-                                    const seconds = Math.round(indexData.remaingCount*indexData.checkTimeout/1e3);
-                                    return `${Math.floor(seconds/3600)}h ${Math.floor((seconds%3600)/60)}m`;
-                                })()}`} /><br />
-                            </>
-                        ) : ''}
                     </StaticCard>
                 </div>
 

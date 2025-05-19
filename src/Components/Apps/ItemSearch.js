@@ -43,15 +43,19 @@ const ItemSearch = props => {
     return (
         <div className="search-header" style={{textAlign:'center'}}>
             <h1 className="page-header">Pit Panda Mystic Search</h1>
-            <QueryBox query={setQuerystring} baseQuery={props.match.params.query} />
-            <div style={{display:'inline-block',textAlign:'left',margin:'20px'}}>
-                <StaticCard title="Results">
+
+            <div className="mystic-search-container">
+
+            <QueryBox className="mystic-query-card" query={setQuerystring} baseQuery={props.match.params.query} />
+
+                <StaticCard title="Results" className="mystic-results-card">
                     <ItemSearchInventory />
                     {lastSize===pageSize&&!loading?
                     <div style={{margin:'auto',textAlign:'center'}}>
                         <button onClick={() => setPage(p => p + 1)} className='srchBtn'>Load More</button>
                     </div>:''}
                 </StaticCard>
+
             </div>
         </div>
     )

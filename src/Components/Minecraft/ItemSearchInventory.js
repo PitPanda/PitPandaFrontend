@@ -10,7 +10,7 @@ export const ItemSearchInventory = () => {
   const toFill = rows * 9 - itemCount;
 
   return (
-    <div style={{width:`${55.5*9}px`}} className="MinecraftInventory">
+    <div className="mystic-search-inventory MinecraftInventory">
       {Array.from({length: itemCount}, (_, index)=>(
         <ItemSearchSlot 
           key={index} 

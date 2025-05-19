@@ -8,11 +8,14 @@ class Inventory extends React.Component {
         const width = props.width || 9;
         const rows = props.rows || 1;
         let len = (props.inventory || []).length;
-        const toFill = Math.max(
-            rows*width-len,
-            width*Math.ceil(len/width)-len
-        );
-        let filler = new Array(toFill).fill({});
+        let filler = [];
+        if (!props.hideEmptySlots) {
+            const toFill = Math.max(
+                rows*width-len,
+                width*Math.ceil(len/width)-len
+            );
+            filler = new Array(toFill).fill({});
+        }
         let style = {...(props.style || {})};
         style.maxWidth=`${55.4*width}px`;
         this.state = {
@@ -22,7 +25,8 @@ class Inventory extends React.Component {
             filler,
             showTitle: props.showTitle || false,
             title: props.title || '',
-            hideIfEmpty: props.hideIfEmpty || false
+            hideIfEmpty: props.hideIfEmpty || false,
+            hideEmptySlots: props.hideEmptySlots || false
         };
     }
 
@@ -35,8 +39,7 @@ class Inventory extends React.Component {
         const rows = props.rows || 1;
         let len = (props.inventory || []).length;
         const toFill = Math.max(
-            rows*width-len,
-            width*Math.ceil(len/width)-len
+            0
         );
         let filler;
         if(toFill===state.filler.length) filler = state.filler;
@@ -68,17 +71,37 @@ class Inventory extends React.Component {
         return (
             <>
                 {this.state.showTitle && this.state.title && (
-                    <div className="inventory-title">{this.state.title}</div>
+                    <div className="inventory-title">
+                        {this.state.title}
+                        {this.props.showCountInTitle && (() => {
+                            const inventory = this.state.inventory || [];
+                            const itemCount = inventory.reduce((sum, item) => sum + (item?.count || 0), 0);
+                            const totalCount = inventory.reduce((sum, item) => sum + (item?.maxCount || 1), 0);
+                            return (
+                                <span className={`inventory-title-count ${itemCount === totalCount ? 'maxed' : ''}`}> ({itemCount} / {totalCount})</span>
+                            );
+                        })()}
+                    </div>
+
                 )}
                 <div style={this.state.style} className="MinecraftInventory">
-                    {(this.state.inventory||[]).map((item,index)=>(
-                        <MinecraftItemSlot 
-                            key={(item.uuid||'')+index} item={item} colors={this.props.colors}
-                            onClick={this.props.onClick?e=>this.props.onClick(index,e):()=>{}}
-                            onContextMenu={this.props.onContextMenu?e=>this.props.onContextMenu(index,e):()=>{}}
-                            unlockable={this.props.unlockable}
-                        />
-                    ))}
+                    {(this.state.inventory||[])
+                        .sort((a, b) => {
+                            if (this.props.sortByUnlocked) {
+                                const aCount = a?.count || 0;
+                                const bCount = b?.count || 0;
+                                return (bCount > 0) - (aCount > 0);
+                            }
+                            return 0;
+                        })
+                        .map((item,index)=>(
+                            <MinecraftItemSlot 
+                                key={(item.uuid||'')+index} item={item} colors={this.props.colors}
+                                onClick={this.props.onClick?e=>this.props.onClick(index,e):()=>{}}
+                                onContextMenu={this.props.onContextMenu?e=>this.props.onContextMenu(index,e):()=>{}}
+                                unlockable={this.props.unlockable}
+                            />
+                        ))}
                     {this.state.filler.map((blank,index)=>(
                         <MinecraftItemSlot 
                             key={'filler'+index} item={blank} 

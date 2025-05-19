@@ -41,7 +41,7 @@ class PlayerForm extends React.Component {
         return (
             <div id="search-header">
                 <div style={{display: 'flex', justifyContent: 'center'}} className="page-header">
-                    <h1>P<Link href='/signatures'>i</Link>t Panda</h1> <img src={logo} alt="Pit Panda Logo" className="header-logo" />
+                    <img src={logo} alt="Pit Panda Logo" className="header-logo" /> <h1>P<Link href='/signatures'>i</Link>t Panda</h1>
                 </div>
                 <form onSubmit={this.handleSubmit}>
                     <h3 className="page-subheader">The Advanced Pit Stats Grabber</h3>

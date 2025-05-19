@@ -27,6 +27,8 @@
   padding-right:12px;
   width: max-content;
   font-size: 15px;
+
+  text-align: left;
 }
 
 .itemcontainer {
@@ -130,4 +132,22 @@
   68%  {border-color: yellow;}
   85%  {border-color: green;}
   100%  {border-color: blue;}
+}
+
+/* Mobile and small screen layouts */
+
+@media (max-width: 950px) {
+  .itemcontainer {
+    position: fixed !important;
+    bottom: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+  }
+
+  .mctooltip {
+    width: 100% !important;
+  }
 }

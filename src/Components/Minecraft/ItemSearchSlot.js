@@ -46,7 +46,7 @@ export const ItemSearchSlot = withRouter(props => {
           ...item,
           desc: [
             `§7Owner: ${ownerData.string}`,
-            `§7Lastseen: ${new Date(item.lastseen*1000).toLocaleString()}`,
+            `§7Last Seen: ${new Date(item.lastseen*1000).toLocaleString()}`,
             ...item.desc
           ]
         }}

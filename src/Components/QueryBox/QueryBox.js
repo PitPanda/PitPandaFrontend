@@ -106,7 +106,7 @@ const QueryBox = props => {
         else if(index >= inputs.length) buttonRef.current.focus();
     }
     return (
-        <StaticCard title="Query" style={{width:'350px',display:'inline-block',verticalAlign:'top',margin:'20px',textAlign:'left'}}>
+        <StaticCard title="Query" className={props.className}>
             {inputs.map((input,index)=>(
                 <SearchField 
                     up={() => focus(index-1)} 

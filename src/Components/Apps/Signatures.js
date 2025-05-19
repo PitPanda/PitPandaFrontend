@@ -46,21 +46,33 @@ function Signatures(props){
                     <input
                         type='button'
                         onClick={onClick}
-                        value='GO'
+                        value='Go'
+                        className='srchBtn'
                         style={{
                             marginLeft: '3%',
-                            width:'22%',
-                            fontSize: '16px',
-                            padding:'5px',
-                            color: 'white',
-                            border: 'none',
-                            backgroundColor: 'rgb(221,159,78)',
-                            WebkitAppearance: 'none',
                         }}
                     />
                 </StaticCard>
-                <StaticCard title="About">
-                    So pretty much just put the text in your forum signature
+                <StaticCard title="Forum Signatures">
+                <div className="instructions-content">
+                    <div>Follow these steps to create a signature for the Hypixel Forums:</div>
+                    <div data-t="header.cards.tutorial.step_0"><b>①</b> Log into the Hypixel Forums and visit <a target="_blank" href="https://hypixel.net/account/signature">https://hypixel.net/account/signature</a>.</div>
+                    <div data-t="header.cards.tutorial.step_1"><b>②</b> Click the three dots (<img alt="" className="tinyicon" src="/img/svg/hypixel_forums/three_dots.svg" style={{display: 'initial'}} /> More options) and then "<img alt="" className="tinyicon" src="https://nadeshiko.io/img/svg/hypixel_forums/brackets.svg" style={{display: 'initial'}} /> Toggle BB code".</div>
+                    <div data-t="header.cards.tutorial.step_2"><b>③</b> Paste the BBCode below into the text box and click "<img alt="" className="tinyicon" src="https://nadeshiko.io/img/svg/hypixel_forums/save.svg" style={{display: 'initial'}} /> Save".</div>
+                    <img 
+                        src="https://nadeshiko.io/img/cards/card_tutorial.gif" 
+                        style={{
+                            width: '100%',
+                            borderRadius: '10px',
+                            display: 'initial'
+                        }}
+                        alt="Visiting the Hypixel Forums and following the listed instructions above"
+                        width="330"
+                        height="172.4"
+                        loading="lazy"
+                    />
+                    <i data-t="header.cards.tutorial.additional">You can include other text or images in your signature too!</i>
+                </div>
                 </StaticCard>
             </div>
             <div style={{ display:'inline-block', verticalAlign:'top', width:'650px' }}>
@@ -74,6 +86,7 @@ function Signatures(props){
                             color: '#fff',
                             marginBottom: '16px',
                             fontSize: '12px',
+                            userSelect: 'all',
                         }}>[URL='https://pitpanda.rocks/players/{targetPlayer}'][IMG]https://pitpanda.rocks{sig.path}{targetPlayer}[/IMG][/URL]</code>
                         <img src={sig.path+targetPlayer} alt={sig.name} />
                     </StaticCard>

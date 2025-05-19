@@ -12,6 +12,40 @@
   padding: 10px 16px;
   background-color: #393939;
   text-align: left;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expander-container {
+  cursor: pointer;
+}
+
+.expander-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.expander-icon {
+  background-image: url('../../Images/svg/bigarrow.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  transition-duration: var(--transition-small);
+  opacity: 0.5;
+
+  display: inline-block;
+}
+
+.expander-container input:checked ~ .expander-icon {
+  transform: rotate(-180deg);
+  opacity: 1;
 }
 
 .Card-Body {
@@ -42,4 +76,13 @@ ul li:hover,
   -moz-transition: color 0.1s;
   -o-transition: color 0.1s;
   transition: color 0.1s;
+}
+
+
+/* Mobile and small screen layouts */
+
+@media (max-width: 950px) {
+  .Card-Head:has(input:checked) ~ .Card-Body {
+    display: none;
+  }
 }

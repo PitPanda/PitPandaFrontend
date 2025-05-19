@@ -12,6 +12,7 @@ import frontendTools from '../../scripts/frontendTools';
 import { withRouter } from 'react-router-dom';
 import external from '../../Images/svg/external.svg';
 import nadeshiko from '../../Images/nadeshiko_logo.png';
+import namemc from '../../Images/namemc_logo.png';
 
 import axios from 'axios';
 
@@ -45,11 +46,7 @@ class Player extends React.Component {
     return (
       <React.Fragment>
         <Header history={this.props.history}/>
-        <div style={{
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center'
-        }}>
+        <div className="player-container">
           {this.state.user?(
             <React.Fragment>
               <div id="side" style={{
@@ -60,8 +57,8 @@ class Player extends React.Component {
                 <StaticCard title="Profile">
                   <div>
                     <img 
-                      src={`https://crafatar.com/avatars/${this.state.user.uuid}?overlay=true`} 
-                      style = {{width:'100px', height:'100px', display:'inline-block'}}
+                      src={`https://h.matdoes.dev/2d/${this.state.user.uuid}`} 
+                      style = {{width:'100px', height:'100px', display:'inline-block', imageRendering:'pixelated'}}
                       alt = ''
                     />
                     <div key={this.state.user.uuid} style={{verticalAlign:'top', display:'inline-block', marginTop:'7px',marginLeft:'10px', fontSize:'17px'}}>
@@ -73,8 +70,10 @@ class Player extends React.Component {
 
                   </div>
 
-                  <a className="hypixel-stats-link" href={`https://nadeshiko.io/player/${this.state.user.uuid}`} target="_blank" rel="noopener noreferrer"><img className="hypixel-stats-logo" src={nadeshiko} alt="nadeshiko logo" ></img> Hypixel Stats <img className="hypixel-stats-logo" src={external} alt="External link"></img></a>
-
+                  <div style={{display:'flex', justifyContent:'space-around', alignItems:'center'}}>
+                    <a className="hypixel-stats-link" href={`https://nadeshiko.io/player/${this.state.user.uuid}`} target="_blank" rel="noopener noreferrer"><img className="hypixel-stats-logo" src={nadeshiko} alt="nadeshiko logo" ></img> Hypixel Stats <img className="hypixel-stats-logo" src={external} alt="External link"></img></a><span>•</span>
+                    <a className="hypixel-stats-link" href={`https://namemc.com/profile/${this.state.user.uuid}`} target="_blank" rel="noopener noreferrer"><img className="hypixel-stats-logo" src={namemc} alt="NameMC logo" ></img>NameMC<img className="hypixel-stats-logo" src={external} alt="External link"></img></a>
+                  </div>
                 </StaticCard>
                 {this.state.user.displays.map((display,i,a) => {
                   const key = `${this.state.user.uuid}-${display.display_type}-${i}`;
@@ -126,7 +125,12 @@ class Player extends React.Component {
                     </div>
                     <div>Last seen in The Pit {frontendTools.timeSince(this.state.user.lastSave)} ago</div>
                     {this.state.user.online ? '' : <>
-                      <div>Last seen on Hypixel {frontendTools.timeSince(this.state.user.lastLogout)} ago</div>
+                      <div>
+                        {this.state.user.lastLogout === undefined ? 
+                          '' :
+                          `Last seen on Hypixel ${frontendTools.timeSince(this.state.user.lastLogout)} ago`
+                        }
+                      </div>
                     </>}
                     {this.state.user.bounty ? <div>Bounty: <span className={`text-bounty ${this.state.user.bounty >= 5000 ? 'bounty-big' : ''}`}>{this.state.user.bounty.toLocaleString()}g</span></div> : ''}
                   </div>
@@ -190,14 +194,57 @@ class Player extends React.Component {
                     </div>
                   ),(
                     <div key={`Renown-${this.state.user.uuid}`}>
-                      <Inventory key='renownshop' inventory={this.state.user.inventories.renownShop} width={7} style={{margin:'0 auto', display:'block'}} unlockable={true}/>
+                        <Inventory key='renownshop-upgrades' 
+                          inventory={this.state.user.inventories.renownShop.filter(item => item.category === 'Upgrade')} 
+                          width={7} 
+                          style={{margin:'0 auto', display:'block'}} 
+                          unlockable={true}
+                          showTitle={true}
+                          showCountInTitle={true}
+                          sortByUnlocked={true}
+                          title='Upgrades'
+                          hideEmptySlots={true}
+                        />
+                        <Inventory key='renownshop-perks' 
+                          inventory={this.state.user.inventories.renownShop.filter(item => item.category === 'Perk')} 
+                          width={7} 
+                          style={{margin:'0 auto', display:'block'}} 
+                          unlockable={true}
+                          showTitle={true}
+                          showCountInTitle={true}
+                          sortByUnlocked={true}
+                          title='Perks'
+                          hideEmptySlots={true}
+                        />
+                        <Inventory key='renownshop-shop' 
+                          inventory={this.state.user.inventories.renownShop.filter(item => item.category === 'Shop')} 
+                          width={7} 
+                          style={{margin:'0 auto', display:'block'}} 
+                          unlockable={true}
+                          showTitle={true}
+                          showCountInTitle={true}
+                          sortByUnlocked={true}
+                          title='Shop Items'
+                          hideEmptySlots={true}
+                        />
+                        <Inventory key='renownshop-killstreaks' 
+                          inventory={this.state.user.inventories.renownShop.filter(item => item.category === 'Killstreaks')} 
+                          width={7} 
+                          style={{margin:'0 auto', display:'block'}} 
+                          unlockable={true}
+                          showTitle={true}
+                          showCountInTitle={true}
+                          sortByUnlocked={true}
+                          title='Killstreaks'
+                          hideEmptySlots={true}
+                        />
                     </div>
                   )
                 ]}/>
                 <NumberedCard key={this.state.user.uuid} content={this.state.user.prestiges.map((prestige,index)=>(
                   <div>
                     {prestige.timestamp?<h3 style={{marginBottom:'10px'}}>Unlocked on {(new Date(prestige.timestamp)).toLocaleString()}</h3>:''}
-                    {prestige.gold&&this.state.user.prestiges.length-1!==index?<h3 style={{marginBottom:'10px'}}>Completed with {frontendTools.abbrNum(prestige.gold,2)}g earned</h3>:''}
+                    {prestige.gold&&this.state.user.prestiges.length-1!==index?<h3 style={{marginBottom:'10px'}}>Completed with {prestige.gold.toLocaleString()}g earned</h3>:''}
                     <table style={{width:'100%'}}>
                       <tbody>
                         <tr>

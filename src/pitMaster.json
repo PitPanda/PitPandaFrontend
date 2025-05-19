@@ -5527,7 +5527,7 @@
 			},
 			"gheads": {
 				"displayName": "Top Golden Heads Eaten",
-				"short": "Golden Heads"
+				"short": "Golden Heads Eaten"
 			},
 			"lavaBuckets": {
 				"displayName": "Top Lava Buckets Emptied",

@@ -43,7 +43,7 @@ const Home = (props) => {
             <TitlelessCard key={player.uuid}style={{width:'410px',margin:'10px',display:'inline-block'}}>
               <Link href={`/players/${player.uuid}`}>
                 <img 
-                  src={`https://crafatar.com/avatars/${player.uuid}?size=8&overlay=true`} 
+                  src={`https://h.matdoes.dev/2d/${player.uuid}`} 
                   className = "home-player-avatar"
                   alt = ''
                 />

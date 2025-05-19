@@ -28,6 +28,21 @@ function Nav(props){
     useEffect(()=>{
         return props.history.listen((location)=>setSelected(findBest(location.pathname)));
     });
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === '/') {
+                event.preventDefault();
+                focusSearchInput();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
     
     const handleSearch = (e) => {
         e.preventDefault();
@@ -72,16 +87,37 @@ function Nav(props){
                         className={`search-icon ${isSearchFocused ? '' : 'icon-blurred'}`}
                         onClick={focusSearchInput}
                     />
-                    <input
-                        type="text"
-                        className="nav-search-input"
-                        placeholder="Search for a player..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        ref={searchInputRef}
-                        onFocus={() => setIsSearchFocused(true)}
-                        onBlur={() => setIsSearchFocused(false)}
-                    />
+                    <div className="search-input-wrapper1" style={{ position: 'relative' }}>
+  <input
+    type="text"
+    className="nav-search-input"
+    placeholder=""
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    ref={searchInputRef}
+    onFocus={() => setIsSearchFocused(true)}
+    onBlur={() => setIsSearchFocused(false)}
+    style={{ position: 'relative', zIndex: 1 }}
+  />
+  {!searchQuery && !isSearchFocused && (
+    <span
+      className="fake-placeholder"
+      style={{
+        position: 'absolute',
+        left: '32px',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        pointerEvents: 'none',
+        color: '#888',
+        zIndex: 1,
+        fontSize: '14px',
+        whiteSpace: 'nowrap'
+      }}
+    >
+      Search for a player... <kbd class="hide-on-mobile">/</kbd>
+    </span>
+  )}
+</div>
                 </form>
             </div>
         </div>

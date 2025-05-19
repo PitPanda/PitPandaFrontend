@@ -21,6 +21,8 @@ div.nav {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+
+    overflow: hidden;
 }
 
 div.nav-links {
@@ -50,7 +52,7 @@ div.nav-search {
     width: 16px;
     height: 16px;
     cursor: pointer;
-    z-index: 1;
+    z-index: 3;
     transition: opacity var(--transition-small) ease-in-out;
 }
 
