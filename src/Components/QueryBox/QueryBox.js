@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SearchField from '../SearchField/SearchField';
 import StaticCard from '../Cards/StaticCard';
 import pitMaster from '../../pitMaster.json';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 let Mystics = pitMaster.Pit.Mystics;
 
@@ -52,7 +52,7 @@ const formatted = Object.entries(Mystics)
     .sort(([,a],[,b])=>a.Name.substring(a.Name.indexOf('§9')+2)<b.Name.substring(b.Name.indexOf('§9')+2)?-1:1);
 
 function createInputData(){
-    return {id:uuid.v4(),ref:React.createRef(),reporting:'',says:''};
+    return {id:uuidv4(),ref:React.createRef(),reporting:'',says:''};
 }
 
 const QueryBox = props => {

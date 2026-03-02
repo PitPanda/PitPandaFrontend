@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
 import Player from './Components/Apps/Player';
 import Home from './Components/Apps/Home';
@@ -33,19 +33,23 @@ axios.interceptors.response.use(response => {
     return error.response || {data:{success: false, error: error.toString()}};
 });
 
-ReactDOM.render((
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
     <RecoilRoot>
         <BrowserRouter>
             <Nav/>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/leaderboard" component={Leaderboard}/>
-                <Route exact path="/signatures" component={Signatures}/>
-                <Route exact path="/keyinfo" component={KeyInfo}/>
-                <Route exact path="/players/:id" component={Player}/>
-                <Route exact path="/itemsearch/:query?" component={ItemSearch}/>
-                <Redirect to="/"/>
-            </Switch>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/leaderboard" element={<Leaderboard/>}/>
+                <Route path="/signatures" element={<Signatures/>}/>
+                <Route path="/keyinfo" element={<KeyInfo/>}/>
+                <Route path="/players/:id" element={<Player/>}/>
+                <Route path="/itemsearch/:query?" element={<ItemSearch/>}/>
+                <Route path="/itemsearch" element={<ItemSearch/>}/>
+                <Route path="*" element={<Navigate to="/" replace />}/>
+            </Routes>
         </BrowserRouter>
     </RecoilRoot>
-), document.getElementById('root'));
+);

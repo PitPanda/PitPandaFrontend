@@ -1,6 +1,6 @@
 .progress-bar {
     height: 20px;
-    margin-top: -1px;
+    margin-top: -2px;
     margin-bottom: 10px;
     margin-left: -2px;
     border-top-right-radius: 7px;
@@ -13,6 +13,12 @@
 
 .ProgressBar {
     margin-bottom:10px;
+}
+
+.progress-name-container {
+    position: relative;
+    left: 3px;
+    bottom: 3px;
 }
 
 .progress-icon {
@@ -57,6 +63,8 @@
     text-align: center;
     color:#fff;
     font-size: 16px;
+
+    text-shadow: 0px 0px 5px #202020, 0px 0px 10px #202020;
 }
 
 /*
@@ -70,13 +78,13 @@
 */
 
 .xpbg, .xpbg::before {
-    background-color: #50caca;
+    background-color: #23cece;
 }
 
 .goldbg, .goldbg::before {
-    background-color: #d9a334;
+    background-color: #b38426;
 }
 
 .renownbg, .renownbg::before {
-    background-color: #8f58ff;
+    background-color: #bebe1f;
 }

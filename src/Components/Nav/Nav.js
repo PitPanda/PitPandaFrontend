@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {withRouter} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import Link from '../Link/Link';
 import './Nav.css';
 import logo from '../../Images/logo.png';
@@ -8,6 +8,9 @@ import mysticsIcon from '../../Images/svg/mystics.svg';
 import leaderboardIcon from '../../Images/svg/leaderboards.svg';
 
 function Nav(props){
+    const navigate = useNavigate();
+    const location = useLocation();
+    
     const buttons = [
         {name:'Pit Panda', path:'/', hasLogo: true},
         {name:'Mystics',path:'/itemsearch', isButton: true, icon: mysticsIcon},
@@ -20,14 +23,14 @@ function Nav(props){
         }
         return best;
     }
-    let [selected, setSelected] = useState(findBest(window.location.pathname));
+    let [selected, setSelected] = useState(findBest(location.pathname));
     let [searchQuery, setSearchQuery] = useState('');
     const searchInputRef = useRef(null);
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     
     useEffect(()=>{
-        return props.history.listen((location)=>setSelected(findBest(location.pathname)));
-    });
+        setSelected(findBest(location.pathname));
+    }, [location.pathname]);
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -47,7 +50,7 @@ function Nav(props){
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchQuery && searchQuery.trim() !== '') {
-            props.history.push(`/players/${searchQuery}`);
+            window.location.assign(`/players/${searchQuery}`);
             setSearchQuery('');
         }
     };
@@ -114,7 +117,7 @@ function Nav(props){
         whiteSpace: 'nowrap'
       }}
     >
-      Search for a player... <kbd class="hide-on-mobile">/</kbd>
+      Search for a player... <kbd className="hide-on-mobile">/</kbd>
     </span>
   )}
 </div>
@@ -122,4 +125,4 @@ function Nav(props){
             </div>
         </div>
     );
-} export default withRouter(Nav);
+} export default Nav;

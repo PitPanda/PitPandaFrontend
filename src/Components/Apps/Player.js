@@ -9,10 +9,11 @@ import Header from '../Header/Header';
 import PlayerList from '../PlayerList/PlayerList';
 import LeaderboardPositions from '../LeaderboardPositions/LeaderboardPositions';
 import frontendTools from '../../scripts/frontendTools';
-import { withRouter } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import external from '../../Images/svg/external.svg';
 import nadeshiko from '../../Images/nadeshiko_logo.png';
 import namemc from '../../Images/namemc_logo.png';
+import StatsDisplay from '../Stats/StatsDisplay';
 
 import axios from 'axios';
 
@@ -22,19 +23,46 @@ class Player extends React.Component {
   state = {user:null,alive:true};
 
   componentDidMount(){
-    this.loadUser(`/players/${(this.props.match.params.id||'').trim()}`);
-    this.unlisten = this.props.history.listen((location)=>{
-      this.loadUser(location.pathname);
-    });
+    this.loadUser(`/players/${(this.props.params.id||'').trim()}`);
+    this.ssrConsumed = true;
+    this.unlisten = this.props.navigate && this.props.location && this.props.location.pathname ? 
+      (() => {
+        this.previousPathname = this.props.location.pathname;
+      }) : 
+      (() => {});
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location?.pathname !== this.props.location?.pathname) {
+      this.loadUser(this.props.location.pathname);
+    }
   }
 
   componentWillUnmount(){
     this.setState({alive:false});
-    this.unlisten();
+    if (this.unlisten) this.unlisten();
   }
 
   loadUser = async (path) => {
     if(!path.startsWith('/players/'))return;
+
+    if (window.__PLAYER_DATA__ !== undefined) {
+      const result = window.__PLAYER_DATA__;
+      delete window.__PLAYER_DATA__;
+      if (result.success && this.state.alive) {
+        this.setState({user: result.data, error: undefined});
+      } else {
+        this.setState({error: result.error || 'Player not found', user: undefined});
+      }
+      return;
+    }
+
+    if (this.ssrConsumed) {
+      window.location.assign(path);
+      return;
+    }
+
+    // Dev mode fallback: call the API directly
     const response = await axios.get(`/api${path}`).catch(r=>r);
     const json = response.data;
     if(json.success && this.state.alive) {
@@ -42,10 +70,17 @@ class Player extends React.Component {
     } else this.setState({error:json.error,user:undefined});
   }
 
+  areStashesEmpty = () => {
+    const { well, spireStash, stash } = this.state.user.inventories;
+    return (!well || well.length === 0) &&
+           (!spireStash || spireStash.length === 0) &&
+           (!stash || stash.length === 0);
+  }
+
   render() {
     return (
       <React.Fragment>
-        <Header history={this.props.history}/>
+        <Header history={{push: this.props.navigate}} hidden={Boolean(this.state.user)} sad={Boolean(this.state.error)} />
         <div className="player-container">
           {this.state.user?(
             <React.Fragment>
@@ -82,8 +117,8 @@ class Player extends React.Component {
                       return (
                         <StaticCard title={upperFirst(display.type)} key={key} >
                           <div style={{maxWidth:'300px'}}>
-                            This player has been marked as a {display.type} by the <a href="https://discord.gg/CdTmYrG">Trade Center Discord</a> staff.
-                            {display.notes?<><br/><br/>Trade Center Staff notes:<br/> {display.notes}</>:''}
+                            This player has been marked as a {display.type} by the <a href="https://discord.gg/TPsFyGmxcQ" target="_blank" rel="noopener noreferrer">Planet Pit Discord</a> staff.
+                            {display.notes?<><br/><br/>Planet Pit staff notes:<br/> <i>{display.notes}</i></>:''}
                             {display.discordid?<><br/><br/>Discord ID: <br/>{display.discordid}</>:''}
                             {display.main?<><br/><br/>Main:<br/><PlayerList players={[{tag:display.main}]} instant={true} /></>:''}
                           </div>
@@ -120,7 +155,7 @@ class Player extends React.Component {
                 })}
                 <StaticCard title="Status" content={
                   <div style={{fontSize:'16px'}}>
-                    <div className='text-title' style={{color:this.state.user.online?'green':'red'}}>
+                    <div style={{color:this.state.user.online?'green':'red'}}>
                       {this.state.user.online ? 'Online' : 'Offline'}
                     </div>
                     <div>Last seen in The Pit {frontendTools.timeSince(this.state.user.lastSave)} ago</div>
@@ -158,16 +193,16 @@ class Player extends React.Component {
               <div id="main" style={{
                 display: 'inline-block',
                 margin: '20px',
-                minWidth: '600px'
+                width: '600px'
               }}>
-                <TabbedCard tabs={["Inventory","Ender Chest","Stashes"]} content={[
+                <TabbedCard scrollable={true} tabs={["Inventory","Ender Chest",{name:"Stashes", disabled: this.areStashesEmpty()}]} content={[
                   (
-                    <div key={`Inventory-${this.state.user.uuid}`}>
+                    <div key={`Inventory-${this.state.user.uuid}`} style={{minWidth: 'calc(498.6px + 55.4px + 3px)'}}>
                       <Inventory key='main' inventory={this.state.user.inventories.main} rows={4} colors={true} style={{marginRight:'3px'}}/>
                       <Inventory key='armor' inventory={this.state.user.inventories.armor} width={1} rows={4} colors={true}/>
                     </div>
                   ),(
-                    <div key={`Enderchest-${this.state.user.uuid}`}>
+                    <div key={`Enderchest-${this.state.user.uuid}`} style={{minWidth: 'calc(498.6px)'}}>
                       <Inventory key='enderchest' inventory={this.state.user.inventories.enderchest} rows={3} colors={true}/>
                     </div>
                   ),(
@@ -178,19 +213,17 @@ class Player extends React.Component {
                     </div>
                   )
                 ]}/>
-                <StaticCard title="Statistics" content={
-                  <div key={`General-${this.state.user.uuid}`}>
-                    <Inventory key='genstats' inventory={this.state.user.inventories.generalStats} width={this.state.user.inventories.generalStats.length} style={{margin:'0 auto', display:'block'}}/>
-                  </div>
-                }/>
+                <StaticCard title="Statistics">
+                  <StatsDisplay items={this.state.user.inventories.generalStats} key={`General-${this.state.user.uuid}`} />
+                </StaticCard>
                 <TabbedCard tabs={["Perks & Passives","Renown"]} content={[
                   (
-                    <div key={`Perk-${this.state.user.uuid}`}>
-                      <Inventory key='perks' inventory={this.state.user.inventories.perks} width={this.state.user.inventories.perks.length} style={{margin:'0 auto', display:'block'}}/>
+                    <div key={`Perk-${this.state.user.uuid}`} className="perk-inventory">
+                      <Inventory key='perks' className="centered" inventory={this.state.user.inventories.perks} width={this.state.user.inventories.perks.length} />
                       <hr/>
-                      <Inventory key='killstreaks' inventory={this.state.user.inventories.killstreaks} width={this.state.user.inventories.killstreaks.length} style={{margin:'0 auto', display:'block'}}/>
+                      <Inventory key='killstreaks' className="centered" inventory={this.state.user.inventories.killstreaks} width={this.state.user.inventories.killstreaks.length} />
                       <hr/>
-                      <Inventory key='upgrades' inventory={this.state.user.inventories.upgrades} width={7} style={{margin:'0 auto', display:'block'}} unlockable={true}/>
+                      <Inventory key='upgrades' className="centered" inventory={this.state.user.inventories.upgrades} width={7} unlockable={true}/>
                     </div>
                   ),(
                     <div key={`Renown-${this.state.user.uuid}`}>
@@ -266,7 +299,7 @@ class Player extends React.Component {
               </div>
             </React.Fragment>
           ):(
-            <div style={{color:"white"}}>
+            <div className="status" style={{color:"white"}}>
               {this.state.error||"Loading..."}
             </div>
           )
@@ -277,4 +310,12 @@ class Player extends React.Component {
   }
 }
 
-export default withRouter(Player);
+function PlayerWithRouter(props) {
+  const params = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  return <Player {...props} params={params} navigate={navigate} location={location} />;
+}
+
+export default PlayerWithRouter;

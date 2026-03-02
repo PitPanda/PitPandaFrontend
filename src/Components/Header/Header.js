@@ -1,7 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Link from '../Link/Link';
 import logo from '../../Images/logo.png';
+import sadLogo from '../../Images/logo_sad.png';
 import searchIcon from '../../Images/svg/search.svg';
 
 class PlayerForm extends React.Component {
@@ -13,11 +14,16 @@ class PlayerForm extends React.Component {
         };
     }
     
+    componentDidMount() {
+        // auto focus search input
+        this.focusSearchInput();
+    }
+    
     handleSubmit = e => {
         e.preventDefault();
         const srch = e.target.srchInp.value.trim().replace(/-/g,'');
         if(srch!=='') {
-            this.props.history.push(`/players/${srch}`);
+            window.location.assign(`/players/${srch}`);
             e.target.srchInp.value='';
         }
     }
@@ -38,10 +44,17 @@ class PlayerForm extends React.Component {
 
     render() {
         const { isSearchFocused } = this.state;
+        const { hidden, sad } = this.props;
+        
+        // hide header when stats loaded
+        if (hidden) {
+            return null;
+        }
+        
         return (
             <div id="search-header">
                 <div style={{display: 'flex', justifyContent: 'center'}} className="page-header">
-                    <img src={logo} alt="Pit Panda Logo" className="header-logo" /> <h1>P<Link href='/signatures'>i</Link>t Panda</h1>
+                    <img src={sad ? sadLogo : logo} alt="Pit Panda Logo" className="header-logo" /> <h1>P<Link href='/signatures'>i</Link>t Panda</h1>
                 </div>
                 <form onSubmit={this.handleSubmit}>
                     <h3 className="page-subheader">The Advanced Pit Stats Grabber</h3>
@@ -74,4 +87,9 @@ class PlayerForm extends React.Component {
     }
 }
 
-export default withRouter(PlayerForm);
+function HeaderWithRouter(props) {
+    const navigate = useNavigate();
+    return <PlayerForm {...props} navigate={navigate} />;
+}
+
+export default HeaderWithRouter;

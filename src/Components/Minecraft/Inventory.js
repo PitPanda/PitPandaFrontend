@@ -84,7 +84,7 @@ class Inventory extends React.Component {
                     </div>
 
                 )}
-                <div style={this.state.style} className="MinecraftInventory">
+                <div style={this.state.style} className={`MinecraftInventory ${this.props.className || ''}`}>
                     {(this.state.inventory||[])
                         .sort((a, b) => {
                             if (this.props.sortByUnlocked) {

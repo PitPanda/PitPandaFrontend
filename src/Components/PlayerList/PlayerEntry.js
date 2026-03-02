@@ -29,4 +29,4 @@ function PlayerEntry(props){
             <Text raw={text}/>
         </Link>
     );
-} export default withRouter(PlayerEntry);
+} export default PlayerEntry;

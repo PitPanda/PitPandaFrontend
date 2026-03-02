@@ -13,10 +13,14 @@ class ProgressBar extends React.Component {
                     <ItemImg {...item}/>
                 </div>
                 <div style={{display:'inline-block',minWidth:'270px',verticalAlign:'top',height:'40px',paddingTop:'3px'}}>
-                    <Text text={this.props.title} className="progress-name"/>
+                    <div className="progress-name-container">
+                        {this.props.title}
+                    </div>
                     <div className="progress-bar">
-                        <div className={`progress-bar-progress ${this.props.type}bg`} style={{width:(Math.min(info.percent,1)*97+3)+'%'}}/>
-                        <Text text={info.description} className="progress-bar-text textshadow"/>
+                        <div className={`progress-bar-progress ${this.props.type}bg`} style={{width:(Math.min(info.percent,1)*100)+'%'}}/>
+                        <div className="progress-bar-text">
+                            {info.description}
+                        </div>
                     </div>
                 </div>
             </div>

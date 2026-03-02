@@ -29,8 +29,8 @@ class NumberedCard extends React.Component {
                         <div style={{display:'inline-block',width:'50px'}}>
                             {(start!==0)?(
                             <React.Fragment>
-                                <div onClick={this.first} className='CardTitle'>&lt;&lt;</div>
-                                <div onClick={this.prev} className='CardTitle'>&lt;</div>
+                                <div onClick={this.first} className='CardTitle'>«</div>
+                                <div onClick={this.prev} className='CardTitle'>‹</div>
                             </React.Fragment>
                             ):''}
                         </div>
@@ -50,12 +50,17 @@ class NumberedCard extends React.Component {
                         <div style={{display:'inline-block',width:'50px'}}>
                             {(end!==this.props.content.length)?(
                                 <React.Fragment>
-                                    <div className='CardTitle' onClick={this.next}>&gt;</div>
-                                    <div className='CardTitle' onClick={this.last}>&gt;&gt;</div>
+                                    <div className='CardTitle' onClick={this.next}>›</div>
+                                    <div className='CardTitle' onClick={this.last}>»</div>
                                 </React.Fragment>
                             ):''}
                         </div>
                     </div>):''}
+                    
+                    <label className="expander-container show-on-mobile">
+                        <input type="checkbox" className="expander-checkbox"/>
+                        <span className="expander-icon"></span>
+                    </label>
                 </div>
                 <div className="Card-Body">
                     {this.props.content[this.state.selected]}

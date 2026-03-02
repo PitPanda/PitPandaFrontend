@@ -1,11 +1,12 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { itemOwnerDataSelector, itemSelector } from '../../Store/ItemSearchStore';
 import ItemSlot from './ItemSlot';
 import getName, { cache } from '../../scripts/playerName';
 
-export const ItemSearchSlot = withRouter(props => {
+export const ItemSearchSlot = props => {
+  const navigate = useNavigate();
   const index = props.index;
   const [item] = useRecoilState(itemSelector(index));
   const [ownerData, setOwnerData] = useRecoilState(itemOwnerDataSelector(index));
@@ -27,7 +28,7 @@ export const ItemSearchSlot = withRouter(props => {
     e.preventDefault();
     if(item.fake) return;
     if(!e.ctrlKey){
-        props.history.push(`/players/${ownerData.uuid}`);
+        window.location.assign(`/players/${ownerData.uuid}`);
     }else{
         let path = `${window.location.origin}/players/${ownerData.uuid}`;
         let win = window.open(path);
@@ -54,5 +55,5 @@ export const ItemSearchSlot = withRouter(props => {
       />
     </div>
   )
-})
+}
 

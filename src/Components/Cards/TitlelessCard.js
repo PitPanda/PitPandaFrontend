@@ -4,7 +4,7 @@ import './cardStyles.css';
 class StaticCard extends React.Component {
   render() {
     return (
-        <div className="Card" style={this.props.style}>
+        <div className={`Card ${this.props.className || ''}`} style={this.props.style}>
             <div className="Card-Body">
                 {this.props.content||this.props.children}
             </div>

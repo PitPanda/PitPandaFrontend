@@ -1,0 +1,69 @@
+.stats-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.stats-tab {
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stats-tab-icon {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.stats-tab.active {
+  background: #515151;
+}
+
+.stats-tab.active:nth-child(1) {
+    background: #e68ba888;
+}
+
+.stats-tab.active:nth-child(2) {
+    background: #61b4ed88;
+}
+
+.stats-tab.active:nth-child(3) {
+    background: #e0995b88;
+}
+
+.stats-tab.active:nth-child(4) {
+    background: #d68fcc88;
+}
+
+.stats-tab.active:nth-child(5) {
+    background: #55c29c88;
+}
+
+.stats-tab.active:nth-child(6) {
+    background: #ababab88;
+}
+
+.stats-content {
+    margin-top: 10px;
+}
+
+.stat-line {
+  margin: 3px 0;
+  font-size: 16px;
+} 
+
+.value {
+    color: #ddd;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}

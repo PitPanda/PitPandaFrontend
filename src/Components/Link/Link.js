@@ -1,14 +1,18 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 
-const Link = withRouter((props) => {
+const Link = (props) => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const { isNavLink, ...restProps } = props;
+    
     const onClick = e => {
-        if(e.ctrlKey || e.button === 1) window.open(`${restProps.location.origin}${restProps.href}`).focus();
-        else if((restProps.href!==restProps.location.pathname+restProps.location.search) && (e.button === 0)) {
+        if(e.ctrlKey || e.button === 1) window.open(`${location.origin || window.location.origin}${restProps.href}`).focus();
+        else if((restProps.href!==location.pathname+location.search) && (e.button === 0)) {
             if(restProps.href.startsWith('http')) window.open(`${restProps.href}`).focus();
+            else if(restProps.href.startsWith('/players/')) window.location.assign(restProps.href);
             else {
-                restProps.history.push(restProps.href);
+                navigate(restProps.href);
                 if(restProps.scroll) window.scrollTo(0,0);
             }
         }
@@ -21,6 +25,6 @@ const Link = withRouter((props) => {
             {restProps.children}
         </div>
     );
-});
+};
 
 export default Link;

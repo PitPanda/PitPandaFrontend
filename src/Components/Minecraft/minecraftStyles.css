@@ -4,6 +4,7 @@
 }
 
 .item{
+  position: relative;
   display: inline-block;
   padding: 8px;
   padding-bottom: 1px;
@@ -50,12 +51,24 @@
   display: inline-block;
 }
 
+.MinecraftInventory.centered {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.perk-inventory .MinecraftInventory.centered {
+  width: 100%;
+  max-width: unset !important;
+}
+
 .count {
   position: absolute;
   font-family: 'Minecraftia';
   color: #fff;
   margin-left: 21px;
   margin-top: 18px;
+  text-align: left;
 }
 
 .halfgrey {

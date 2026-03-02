@@ -5,10 +5,38 @@ import Text from '../Minecraft/Text';
 import Link from '../Link/Link';
 import PageSelector from '../PageSelector/PageSelector';
 import boards from '../../scripts/leaderboards';
-import { withRouter } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const defaultCategory = 'xp';
+
+const containerStyle = {
+    margin: 'auto',
+    maxWidth: '1020px',
+    width: '100%',
+    padding: '0 10px',
+    boxSizing: 'border-box'
+};
+
+const columnsContainerStyle = {
+    display: 'flex',
+    gap: '20px',
+    textAlign: 'left'
+};
+
+const leftColumnStyle = {
+    flex: '1 1 350px',
+    maxWidth: '350px',
+    minWidth: '300px'
+};
+
+const rightColumnStyle = {
+    flex: '1 1 650px',
+    maxWidth: '650px',
+    minWidth: '300px'
+};
+
+const mobileMediaQuery = '@media (max-width: 1040px)';
 
 async function getLeaderboard({ category = defaultCategory, page = 0 }) {
     try {
@@ -37,15 +65,15 @@ function getQuery(search) {
 }
 
 function Leaderboard(props) {
-    const [target, setTarget] = useState(getQuery(props.location.search));
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [target, setTarget] = useState(getQuery(location.search));
     const [data, setData] = useState({ entires: [], loadedType: defaultCategory, loadedPage: 0 });
     const [indexData, setIndexData] = useState({ online: false });
 
     useEffect(() => {
-        return props.history.listen(
-            async location => setTarget(getQuery(location.search))
-        );
-    });
+        setTarget(getQuery(location.search));
+    }, [location.search]);
 
     useEffect(() => {
         let alive = true;
@@ -69,11 +97,26 @@ function Leaderboard(props) {
     }
 
     return (
-        <div className="search-header" style={{textAlign:'center'}}>
-            <h1 className="page-header">Pit Panda Leaderboards</h1>
-            <div style={{ textAlign: 'left', width: '1020px', margin: 'auto' }}>
-                <div style={{ display: 'inline-block', verticalAlign: 'top', marginRight: '20px' }}>
-                    <StaticCard title="Leaderboard Selector" style={{ width: '350px' }}>
+        <div style={containerStyle}>
+            <style>{`
+                ${mobileMediaQuery} {
+                    .lb-columns {
+                        flex-direction: column !important;
+                    }
+                    .lb-left-column,
+                    .lb-right-column {
+                        max-width: none !important;
+                        width: 100% !important;
+                        flex-basis: auto !important;
+                    }
+                }
+            `}</style>
+            <div className="search-header" style={{textAlign:'center'}}>
+                <h1 className="page-header">Pit Panda Leaderboards</h1>
+            </div>
+            <div className='lb-columns' style={columnsContainerStyle}>
+                <div className='lb-left-column' style={leftColumnStyle}>
+                    <StaticCard title="Leaderboard Selector">
                         {boards.ownKeys().map(key => {
                             const board = boards[key];
                             return (
@@ -87,7 +130,7 @@ function Leaderboard(props) {
                     </StaticCard>
                 </div>
 
-                <StaticCard title={boards[data.loadedType].displayName} style={{ width: '650px', display: 'inline-block' }}>
+                <StaticCard title={boards[data.loadedType].displayName} className='lb-right-column' style={rightColumnStyle}>
                     {data.entires.map((user, index) => (
                         <div key={user.uuid} style={{ borderTop: (index !== 0 ? '2px solid #444' : 'none'), padding: '5px' }}>
                             <span class="tabular" style={{ width: '10%', textAlign: 'center', display: 'inline-block' }}>{`${data.loadedPage * 100 + index + 1}`}</span>
@@ -104,4 +147,4 @@ function Leaderboard(props) {
     );
 }
 
-export default withRouter(Leaderboard);
+export default Leaderboard;

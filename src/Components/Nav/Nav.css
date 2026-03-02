@@ -63,7 +63,7 @@ div.nav-search {
 input.nav-search-input {
     all: unset;
     height: 27px;
-    width: 200px;
+    width: 250px;
     border-radius: 24px;
     border: 1px solid #444;
     background-color: #333;
@@ -71,6 +71,7 @@ input.nav-search-input {
     font-size: 14px;
     padding: 0 10px 0 32px;
     outline: none;
+    box-sizing: border-box;
 }
 
 input.nav-search-input:focus {
@@ -161,15 +162,30 @@ input.nav-search-input:focus {
     }
 
     div.nav-search {
-        margin-left: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        flex-shrink: 1;
+        min-width: 0;
+        max-width: calc(100vw - 200px);
+    }
+
+    .search-form {
+        width: 100%;
+        min-width: 0;
     }
 
     .nav-search-input {
         width: 100% !important;
+        min-width: 100px;
+        max-width: 100%;
     }
 
     div.nav {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    div.nav-links {
+        flex-shrink: 0;
     }
 }
