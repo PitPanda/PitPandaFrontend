@@ -24,12 +24,6 @@ class Player extends React.Component {
 
   componentDidMount(){
     this.loadUser(`/players/${(this.props.params.id||'').trim()}`);
-    this.ssrConsumed = true;
-    this.unlisten = this.props.navigate && this.props.location && this.props.location.pathname ? 
-      (() => {
-        this.previousPathname = this.props.location.pathname;
-      }) : 
-      (() => {});
   }
 
   componentDidUpdate(prevProps) {
@@ -40,10 +34,9 @@ class Player extends React.Component {
 
   componentWillUnmount(){
     this.setState({alive:false});
-    if (this.unlisten) this.unlisten();
   }
 
-  loadUser = async (path) => {
+  loadUser = (path) => {
     if(!path.startsWith('/players/'))return;
 
     if (window.__PLAYER_DATA__ !== undefined) {
@@ -57,17 +50,7 @@ class Player extends React.Component {
       return;
     }
 
-    if (this.ssrConsumed) {
-      window.location.assign(path);
-      return;
-    }
-
-    // Dev mode fallback: call the API directly
-    const response = await axios.get(`/api${path}`).catch(r=>r);
-    const json = response.data;
-    if(json.success && this.state.alive) {
-      this.setState({user:json.data,error:undefined});
-    } else this.setState({error:json.error,user:undefined});
+    window.location.assign(path);
   }
 
   areStashesEmpty = () => {
@@ -92,7 +75,7 @@ class Player extends React.Component {
                 <StaticCard title="Profile">
                   <div>
                     <img 
-                      src={`https://h.matdoes.dev/2d/${this.state.user.uuid}`} 
+                      src={`https://nmsr.nickac.dev/face/${this.state.user.uuid}`} 
                       style = {{width:'100px', height:'100px', display:'inline-block', imageRendering:'pixelated'}}
                       alt = ''
                     />

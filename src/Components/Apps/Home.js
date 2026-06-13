@@ -43,7 +43,7 @@ const Home = (props) => {
             <TitlelessCard className="random-player" key={player.uuid}style={{width:'410px',margin:'10px',display:'inline-block'}}>
               <Link href={`/players/${player.uuid}`}>
                 <img 
-                  src={`https://h.matdoes.dev/2d/${player.uuid}`} 
+                  src={`https://nmsr.nickac.dev/face/${player.uuid}`} 
                   className = "home-player-avatar"
                   alt = ''
                 />
