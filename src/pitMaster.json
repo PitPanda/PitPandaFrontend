@@ -1151,6 +1151,22 @@
 				},
 				"Category":"Upgrade"
 			},
+			"fish_maxxing":{
+				"Name": "Fish Maxxing",
+				"Extra":{"Formatting":"Seperated"},
+				"Description":[
+					["§7Allows you to fish §8100→§a250 §7times per day."],
+					["§7Allows you to fish §8250→§a500 §7times per day."],
+					["§7Allows you to fish §8500→§a750 §7times per day."],
+					["§7Allows you to fish §a1000 §7times per day."]
+				],
+				"Costs":[5,5,5,5],
+				"Item":{
+					"Id": 350,
+					"Meta": 0
+				},
+				"Category":"Upgrade"
+			},
 			"contractor":{
 				"Name": "Contractor",
 				"Description":[
